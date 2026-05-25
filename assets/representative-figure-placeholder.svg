@@ -1,0 +1,19 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F2EFE7"/>
+  <rect x="72" y="72" width="1456" height="756" rx="28" fill="#FCFBF7" stroke="#D9D4C7" stroke-width="4"/>
+  <rect x="132" y="150" width="540" height="300" rx="18" fill="#ECE8DE"/>
+  <rect x="708" y="150" width="760" height="36" rx="18" fill="#E3DED1"/>
+  <rect x="708" y="222" width="640" height="22" rx="11" fill="#EAE6DB"/>
+  <rect x="708" y="268" width="700" height="22" rx="11" fill="#EAE6DB"/>
+  <rect x="708" y="314" width="585" height="22" rx="11" fill="#EAE6DB"/>
+  <rect x="132" y="504" width="1296" height="220" rx="24" fill="#F6F4ED" stroke="#E5E0D4" stroke-width="3" stroke-dasharray="10 10"/>
+  <text x="800" y="492" text-anchor="middle" fill="#1A1A18" font-family="Georgia, 'Times New Roman', serif" font-size="38">
+    Representative Figure Placeholder
+  </text>
+  <text x="800" y="604" text-anchor="middle" fill="#666356" font-family="Georgia, 'Times New Roman', serif" font-size="28">
+    Put exported paper figures in assets/ and update index.html to swap this file.
+  </text>
+  <text x="800" y="654" text-anchor="middle" fill="#666356" font-family="Georgia, 'Times New Roman', serif" font-size="28">
+    The layout is sized for GitHub Pages and easy section expansion.
+  </text>
+</svg>
