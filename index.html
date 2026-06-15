@@ -41,9 +41,9 @@
     <nav class="sticky-nav" id="sticky-nav" aria-label="Page sections">
       <div class="sticky-nav__inner">
         <a href="#abstract" class="nav-link">Abstract</a>
-        <a href="#problem" class="nav-link">Problem</a>
-        <a href="#method" class="nav-link">Method</a>
-        <a href="#theory" class="nav-link">Theory</a>
+        <a href="#gap" class="nav-link">The Gap</a>
+        <a href="#approach" class="nav-link">Our Approach</a>
+        <a href="#theory" class="nav-link">Why It Works</a>
         <a href="#experiments" class="nav-link">Experiments</a>
         <a href="#citation" class="nav-link">Citation</a>
       </div>
@@ -128,54 +128,96 @@
       </section>
       <hr class="section-rule">
 
-      <section class="content-section" id="figure">
-        <h2>Representative Figure</h2>
-        <figure class="figure-card">
-          <img
-            src="assets/ramac_evolutions_edit.png"
-            alt="Representative RAMAC learning dynamics figure"
-          />
-          <figcaption>
-            RAMAC learning dynamics. The generative policy is reweighted away
-            from low-CVaR regions while behavior regularization preserves
-            support from the offline dataset.
-          </figcaption>
-        </figure>
-      </section>
-
-      <section class="content-section" id="results">
-        <h2>Results</h2>
-        <div class="results-grid">
-          <article class="result-card">
-            <h3>Risk-Aware Performance</h3>
-            <p>
-              RAMAC improves lower-tail robustness while preserving strong mean
-              performance on multimodal offline RL benchmarks.
-            </p>
-          </article>
-          <article class="result-card">
-            <h3>Behavior Regularization</h3>
-            <p>
-              The policy remains closer to dataset support, reducing unsupported
-              action drift during offline policy improvement.
-            </p>
-          </article>
-        </div>
-        <p class="section-note">
-          Add more figures or tables later by duplicating a
-          <code>figure-card</code> or <code>result-card</code> block.
+      <section class="main-section" id="gap">
+        <h2>⚠️  The Gap</h2>
+        <p class="section-prose">
+          Diffusion and flow policies are the most expressive tools in offline RL — but they
+          optimize mean return only, leaving catastrophic lower-tail outcomes entirely
+          unaddressed. Risk-aware methods like ORAAC and CODAC handle tail risk, but only by
+          constraining the policy class in ways that prevent capturing multimodal action
+          distributions. No prior work achieves risk-awareness, OOD control, and expressiveness
+          simultaneously.
         </p>
-      </section>
 
-      <section class="content-section" id="citation">
-        <h2>Citation</h2>
-        <pre class="citation-block"><code>@article{fukazawa2025ramac,
-  title={RAMAC: Multimodal Risk-Aware Offline Reinforcement Learning and the Role of Behavior Regularization},
-  author={Fukazawa, Kai and Mundada, Kunal and Soltani, Iman},
-  journal={arXiv preprint arXiv:2510.02695},
-  year={2025}
-}</code></pre>
+        <div class="sota-wrap">
+          <table class="sota-table" aria-label="Comparison of offline RL paradigms on three desiderata">
+            <thead>
+              <tr>
+                <th scope="col" class="sota-th sota-th--method">Method</th>
+                <th scope="col" class="sota-th sota-th--criteria">Risk-Awareness</th>
+                <th scope="col" class="sota-th sota-th--criteria">OOD Control</th>
+                <th scope="col" class="sota-th sota-th--criteria">Expressiveness</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="sota-td sota-td--method">
+                  Expressive Risk-Neutral
+                  <span class="sota-examples">DiffusionQL, FlowQL</span>
+                </td>
+                <td class="sota-td sota-td--icon">
+                  <svg class="sota-icon sota-icon--cross" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="No">
+                    <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                  </svg>
+                </td>
+                <td class="sota-td sota-td--icon">
+                  <span class="sota-partial" aria-label="Partial">✗&thinsp;/&thinsp;✓</span>
+                </td>
+                <td class="sota-td sota-td--icon">
+                  <svg class="sota-icon sota-icon--check" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="Yes">
+                    <path d="M4 10l4.5 4.5L16 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </td>
+              </tr>
+              <tr>
+                <td class="sota-td sota-td--method">
+                  Risk-Aware Restricted
+                  <span class="sota-examples">ORAAC, CODAC</span>
+                </td>
+                <td class="sota-td sota-td--icon">
+                  <svg class="sota-icon sota-icon--check" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="Yes">
+                    <path d="M4 10l4.5 4.5L16 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </td>
+                <td class="sota-td sota-td--icon">
+                  <svg class="sota-icon sota-icon--check" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="Yes">
+                    <path d="M4 10l4.5 4.5L16 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </td>
+                <td class="sota-td sota-td--icon">
+                  <svg class="sota-icon sota-icon--cross" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="No">
+                    <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                  </svg>
+                </td>
+              </tr>
+              <tr class="sota-row-ramac">
+                <td class="sota-td sota-td--method sota-td--ramac">
+                  RAMAC <span class="sota-ours">(Ours)</span>
+                </td>
+                <td class="sota-td sota-td--icon">
+                  <svg class="sota-icon sota-icon--check" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="Yes">
+                    <path d="M4 10l4.5 4.5L16 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </td>
+                <td class="sota-td sota-td--icon">
+                  <svg class="sota-icon sota-icon--check" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="Yes">
+                    <path d="M4 10l4.5 4.5L16 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </td>
+                <td class="sota-td sota-td--icon">
+                  <svg class="sota-icon sota-icon--check" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="Yes">
+                    <path d="M4 10l4.5 4.5L16 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="sota-caption">
+            <em>Comparison of offline RL paradigms on three desiderata. RAMAC is the only approach achieving all three simultaneously.</em>
+          </p>
+        </div>
       </section>
+      <hr class="section-rule">
     </main>
 
     <script>
