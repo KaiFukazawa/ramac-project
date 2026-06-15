@@ -218,6 +218,47 @@
         </div>
       </section>
       <hr class="section-rule">
+
+      <section class="main-section" id="approach">
+        <h2 class="reveal">🔧  Our Approach</h2>
+        <p class="section-prose reveal">
+          RAMAC operates in two stages. A <strong>distributional critic</strong> (IQN) learns
+          the full conditional return distribution, giving access to calibrated lower-tail
+          quantiles. A <strong>generative actor</strong> — instantiated as a diffusion policy
+          (RADAC) — is trained jointly on two objectives: a BC term that keeps actions on the
+          data manifold, and a CVaR term that shifts probability mass away from low-quantile
+          outcomes.
+        </p>
+
+        <figure class="paper-figure reveal">
+          <img
+            src="assets/ramac_evolutions_edit.png"
+            alt="RAMAC pipeline showing the distributional critic Zφ fitting the return distribution and aggregating its lower tail into a CVaR signal, then differentiating through the generative actor πθ trained with composite BC plus CVaR objective"
+            class="paper-figure__img"
+            loading="lazy"
+          />
+          <figcaption class="paper-figure__caption">
+            <em>Figure 1. RAMAC pipeline. The distributional critic Z<sub>φ</sub> fits the
+            return distribution and aggregates its lower tail into a CVaR signal. That signal
+            is differentiated through the generative actor π<sub>θ</sub> (diffusion or flow),
+            trained with composite objective ℒ<sub>π</sub> = ℒ<sub>BC</sub> + η ℒ<sub>Risk</sub>
+            to shift mass away from low-quantile regions while staying on-manifold.</em>
+          </figcaption>
+        </figure>
+
+        <div role="math" aria-label="Composite actor loss: L-pi equals L-BC plus eta times L-Risk" class="eq-block reveal">
+          $$\mathcal{L}_\pi(\theta) =
+          \underbrace{\mathcal{L}_{\mathrm{BC}}(\theta)}_{\text{data fidelity}}
+          + \eta\,\underbrace{\mathcal{L}_{\mathrm{Risk}}(\theta)}_{\text{tail-risk aversion}}$$
+          <p class="eq-caption">
+            <em>Eq. 12. The BC term keeps actions on the data manifold and directly bounds OOD
+            probability (Proposition 1). The CVaR term shifts mass away from the worst-α return
+            outcomes.</em>
+          </p>
+        </div>
+      </section>
+      <hr class="section-rule">
+
     </main>
 
     <script>
@@ -248,6 +289,21 @@
         { rootMargin: '-40% 0px -55% 0px' }
       );
       sections.forEach(s => sectionObserver.observe(s));
+
+      // Scroll-reveal for .reveal elements
+      const revealEls = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+      revealEls.forEach(el => revealObserver.observe(el));
     </script>
   </body>
 </html>
