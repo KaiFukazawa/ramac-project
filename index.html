@@ -3,25 +3,113 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RAMAC: Multimodal Risk-Aware Offline Reinforcement Learning</title>
+    <title>RAMAC: Multimodal Risk-Aware Offline RL — ICML 2026</title>
     <meta
       name="description"
-      content="Project page for RAMAC: Multimodal Risk-Aware Offline Reinforcement Learning."
+      content="In safety-critical domains where online data collection is infeasible, offline reinforcement learning (RL) offers an attractive alternative but only if policies deliver high returns without incurring catastrophic lower-tail risk."
     />
+    <meta property="og:title" content="RAMAC — Risk-Aware Multimodal Offline RL (ICML 2026)" />
+    <meta property="og:url" content="https://kaifukazawa.github.io/ramac-project/" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      onload="renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '\\(', right: '\\)', display: false}
+        ]
+      })"
+    ></script>
+
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="page-shell">
-      <header class="hero">
-        <p class="eyebrow">ICML 2026</p>
-        <h1>RAMAC: Multimodal Risk-Aware Offline Reinforcement Learning</h1>
-        <p class="authors">Kai Fukazawa, Kunal Mundada, Iman Soltani</p>
-        <p class="affiliation">University of California, Davis</p>
-        <nav class="action-row" aria-label="Project links">
-          <a class="button-link" href="https://arxiv.org/abs/2510.02695">Paper</a>
-          <a class="button-link" href="https://github.com/KaiFukazawa/RAMAC">Code</a>
+    <a href="#abstract" class="skip-link">Skip to content</a>
+
+    <nav class="sticky-nav" id="sticky-nav" aria-label="Page sections">
+      <div class="sticky-nav__inner">
+        <a href="#abstract" class="nav-link">Abstract</a>
+        <a href="#problem" class="nav-link">Problem</a>
+        <a href="#method" class="nav-link">Method</a>
+        <a href="#theory" class="nav-link">Theory</a>
+        <a href="#experiments" class="nav-link">Experiments</a>
+        <a href="#citation" class="nav-link">Citation</a>
+      </div>
+    </nav>
+
+    <header class="hero" id="hero">
+      <div class="hero__inner">
+        <span
+          class="hero__badge"
+          title="Forty-Third International Conference on Machine Learning"
+        >ICML 2026</span>
+
+        <h1 class="hero__title">
+          RAMAC: Multimodal Risk-Aware Offline Reinforcement Learning
+          and the Role of Behavior Regularization
+        </h1>
+
+        <p class="hero__authors">
+          <span>Kai Fukazawa<sup>1</sup></span>
+          <span class="dot">·</span>
+          <span>Kunal Mundada<sup>2</sup></span>
+          <span class="dot">·</span>
+          <span>Iman Soltani<sup>1</sup></span>
+        </p>
+        <p class="hero__affiliations">
+          <span><sup>1</sup> Dept. of Mechanical and Aerospace Engineering, UC Davis</span>
+          <span class="dot">·</span>
+          <span><sup>2</sup> Dept. of Computer Science, UC Davis</span>
+        </p>
+        <p class="hero__emails">
+          kfukazawa@ucdavis.edu
+          <span class="dot">·</span>
+          kmundada@ucdavis.edu
+          <span class="dot">·</span>
+          isoltani@ucdavis.edu
+        </p>
+
+        <nav class="hero__buttons" aria-label="Project links">
+          <a class="hero-btn hero-btn--filled" href="https://arxiv.org/abs/2510.02695" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+              <path d="M3 2.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-10zm1 .5v9h7V3H4zm1.5 2h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1 0-1zm0 2h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1 0-1zm0 2h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z" fill="currentColor"/>
+            </svg>
+            Paper
+          </a>
+          <a class="hero-btn hero-btn--outline" href="https://github.com/KaiFukazawa/RAMAC" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+              <path d="M7.5 0C3.358 0 0 3.358 0 7.5c0 3.314 2.149 6.124 5.129 7.115.375.069.512-.163.512-.362 0-.178-.006-.651-.01-1.278-2.086.453-2.527-.999-2.527-.999-.341-.866-.832-1.097-.832-1.097-.68-.465.051-.456.051-.456.752.053 1.147.772 1.147.772.668 1.144 1.753.814 2.18.622.068-.483.261-.814.475-1.001-1.665-.19-3.415-.832-3.415-3.702 0-.818.292-1.487.771-2.011-.077-.19-.334-.952.073-1.984 0 0 .63-.201 2.063.769a7.19 7.19 0 0 1 1.875-.252 7.19 7.19 0 0 1 1.875.252c1.432-.97 2.061-.769 2.061-.769.408 1.032.151 1.794.074 1.984.48.524.77 1.193.77 2.011 0 2.878-1.753 3.51-3.423 3.696.269.232.508.689.508 1.389 0 1.003-.009 1.812-.009 2.058 0 .2.135.435.515.361C12.853 13.62 15 10.813 15 7.5 15 3.358 11.642 0 7.5 0z" fill="currentColor"/>
+            </svg>
+            Code
+          </a>
         </nav>
-      </header>
+
+        <div class="hero__tldr">
+          <hr class="hero__rule" />
+          <p class="hero__tldr-label">TL;DR</p>
+          <p class="hero__tldr-body">
+            RAMAC couples an expressive diffusion actor with a distributional critic to learn
+            risk-aware policies from offline data — achieving strong CVaR performance without
+            sacrificing multimodality or incurring out-of-distribution actions.
+          </p>
+          <hr class="hero__rule" />
+        </div>
+      </div>
+    </header>
+
+    <main class="page-shell">
 
       <section class="content-section" id="overview">
         <h2>Overview</h2>
@@ -86,5 +174,35 @@
 }</code></pre>
       </section>
     </main>
+
+    <script>
+      // Sticky nav: show after hero scrolls out, highlight active section
+      const hero = document.getElementById('hero');
+      const nav  = document.getElementById('sticky-nav');
+      const navLinks = nav.querySelectorAll('.nav-link');
+      const sections = Array.from(navLinks)
+        .map(l => document.querySelector(l.getAttribute('href')))
+        .filter(Boolean);
+
+      const heroObserver = new IntersectionObserver(
+        ([e]) => nav.classList.toggle('is-visible', !e.isIntersecting),
+        { threshold: 0 }
+      );
+      heroObserver.observe(hero);
+
+      const sectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              navLinks.forEach(l => l.classList.remove('is-active'));
+              const active = nav.querySelector(`[href="#${entry.target.id}"]`);
+              if (active) active.classList.add('is-active');
+            }
+          });
+        },
+        { rootMargin: '-40% 0px -55% 0px' }
+      );
+      sections.forEach(s => sectionObserver.observe(s));
+    </script>
   </body>
 </html>
