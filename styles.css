@@ -600,6 +600,125 @@ pre {
   transform: translateY(0);
 }
 
+/* ─── Subsection headings (H3) ───────────────────────────── */
+
+.main-section h3,
+.subsection-heading {
+  margin: 64px 0 16px;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-weight: 600;
+  font-size: var(--text-xl);
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+}
+
+/* ─── Table shared utilities ──────────────────────────────── */
+
+.table-caption {
+  margin: 16px 0 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-style: italic;
+  text-align: center;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+}
+
+.table-footnote {
+  margin: 8px 0 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+/* ─── Results table (Table 1) ─────────────────────────────── */
+
+.results-wrap {
+  max-width: var(--width-wide);
+  margin: 32px auto 0;
+  overflow-x: auto;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+}
+
+.rt-th {
+  padding: 11px 16px;
+  font-weight: 600;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.rt-th--left {
+  text-align: left;
+}
+
+.rt-th--metric {
+  text-align: left;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.rt-th--num {
+  text-align: right;
+}
+
+.rt-th--radac {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.rt-td {
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.rt-td--dataset {
+  font-weight: 500;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.rt-td--metric {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.rt-td--num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.rt-td--best {
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.rt-td--second {
+  background: var(--color-accent-light);
+}
+
+/* ─── Table 2 (OOD action rate) ───────────────────────────── */
+
+.table2-wrap {
+  max-width: 520px;
+  margin: 24px auto 0;
+  overflow-x: auto;
+}
+
+.table2 {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+}
+
 /* ─── Theory section ─────────────────────────────────────── */
 
 .theory-eyebrow {

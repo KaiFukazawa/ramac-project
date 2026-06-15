@@ -290,6 +290,226 @@
       </section>
       <hr class="section-rule">
 
+      <section class="main-section" id="experiments">
+        <h2 class="reveal">🧪  Experiments</h2>
+        <p class="section-prose reveal">
+          We evaluate RADAC on <strong>Stochastic-D4RL</strong> — six standard D4RL locomotion
+          datasets augmented with rare heavy-tailed penalties across HalfCheetah, Hopper, and
+          Walker2d. Results are averaged over 5 seeds and 50 evaluation rollouts; we report both
+          mean return and episodic CVaR<sub>0.1</sub>.
+        </p>
+
+        <h3 class="subsection-heading reveal">🎯  2-D Risky Bandit</h3>
+        <p class="section-prose reveal">
+          A 2-D contextual bandit isolates exactly what makes risk-aware offline RL hard: the
+          ground truth has a <strong>safe center</strong> mode (moderate reward, no catastrophic
+          tail) and a <strong>risky ring</strong> (higher mean with rare large penalties). This
+          controlled geometry makes multimodality and lower-tail hazard visible — and reveals where
+          each method's policy mass actually concentrates.
+        </p>
+
+        <div class="figure-placeholder reveal" aria-label="Eight-panel grid showing policy distributions for ground truth and seven methods on the 2-D risky bandit. RADAC concentrates near the safe center; ORAAC variants leak into inter-mode gaps; risk-neutral baselines chase the risky ring.">
+          <span>Figure pending — see paper</span>
+        </div>
+        <p class="table-caption reveal">
+          <em>Top: Ground truth consists of a safe center mode (yellow-green) and a risky ring
+          where high-reward samples (yellow) are interspersed with catastrophic penalties (purple).
+          Risk-neutral generative baselines concentrate on the risky ring or collapse topology.
+          Prior-anchored perturbation methods produce samples in the low-density inter-mode region,
+          exhibiting OOD leakage. RADAC concentrates near the safe center without losing
+          multimodality.</em>
+        </p>
+
+        <h3 class="subsection-heading reveal">📊  Stochastic-D4RL Benchmark</h3>
+
+        <div class="results-wrap reveal">
+          <table class="results-table" aria-label="Stochastic-D4RL benchmark results over 5 seeds">
+            <thead>
+              <tr>
+                <th class="rt-th rt-th--left">Dataset</th>
+                <th class="rt-th rt-th--metric">Metric</th>
+                <th class="rt-th rt-th--num">CQL</th>
+                <th class="rt-th rt-th--num">CODAC</th>
+                <th class="rt-th rt-th--num">ORAAC</th>
+                <th class="rt-th rt-th--num">FlowQL</th>
+                <th class="rt-th rt-th--num">DiffusionQL</th>
+                <th class="rt-th rt-th--num rt-th--radac">RADAC</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- HalfCheetah-ME: best=RADAC, 2nd=FlowQL -->
+              <tr>
+                <td class="rt-td rt-td--dataset" rowspan="2">HalfCheetah-ME</td>
+                <td class="rt-td rt-td--metric">Mean</td>
+                <td class="rt-td rt-td--num">−66.66</td>
+                <td class="rt-td rt-td--num">−0.12</td>
+                <td class="rt-td rt-td--num">796.06</td>
+                <td class="rt-td rt-td--num rt-td--second">844.14</td>
+                <td class="rt-td rt-td--num">−20.71</td>
+                <td class="rt-td rt-td--num rt-td--best">916.64</td>
+              </tr>
+              <tr>
+                <td class="rt-td rt-td--metric">CVaR</td>
+                <td class="rt-td rt-td--num">−135.39</td>
+                <td class="rt-td rt-td--num">−0.11</td>
+                <td class="rt-td rt-td--num">742.94</td>
+                <td class="rt-td rt-td--num rt-td--second">754.44</td>
+                <td class="rt-td rt-td--num">−76.39</td>
+                <td class="rt-td rt-td--num rt-td--best">805.25</td>
+              </tr>
+              <!-- Walker2d-ME: best=RADAC, 2nd=FlowQL -->
+              <tr>
+                <td class="rt-td rt-td--dataset" rowspan="2">Walker2d-ME</td>
+                <td class="rt-td rt-td--metric">Mean</td>
+                <td class="rt-td rt-td--num">−21.52</td>
+                <td class="rt-td rt-td--num">23.96</td>
+                <td class="rt-td rt-td--num">969.62</td>
+                <td class="rt-td rt-td--num rt-td--second">1309.48</td>
+                <td class="rt-td rt-td--num">−32.38</td>
+                <td class="rt-td rt-td--num rt-td--best">1708.68</td>
+              </tr>
+              <tr>
+                <td class="rt-td rt-td--metric">CVaR</td>
+                <td class="rt-td rt-td--num">−64.88</td>
+                <td class="rt-td rt-td--num">−43.88</td>
+                <td class="rt-td rt-td--num">358.55</td>
+                <td class="rt-td rt-td--num rt-td--second">468.15</td>
+                <td class="rt-td rt-td--num">−116.19</td>
+                <td class="rt-td rt-td--num rt-td--best">573.22</td>
+              </tr>
+              <!-- Hopper-ME: best=ORAAC, 2nd=FlowQL -->
+              <tr>
+                <td class="rt-td rt-td--dataset" rowspan="2">Hopper-ME</td>
+                <td class="rt-td rt-td--metric">Mean</td>
+                <td class="rt-td rt-td--num">−25.87</td>
+                <td class="rt-td rt-td--num">26.59</td>
+                <td class="rt-td rt-td--num rt-td--best">714.15</td>
+                <td class="rt-td rt-td--num rt-td--second">341.16</td>
+                <td class="rt-td rt-td--num">−279.97</td>
+                <td class="rt-td rt-td--num">130.74</td>
+              </tr>
+              <tr>
+                <td class="rt-td rt-td--metric">CVaR</td>
+                <td class="rt-td rt-td--num">−111.37</td>
+                <td class="rt-td rt-td--num">−150.92</td>
+                <td class="rt-td rt-td--num rt-td--best">374.63</td>
+                <td class="rt-td rt-td--num rt-td--second">−8.80</td>
+                <td class="rt-td rt-td--num">−872.95</td>
+                <td class="rt-td rt-td--num">−167.29</td>
+              </tr>
+              <!-- HalfCheetah-MR: best=RADAC, 2nd=FlowQL -->
+              <tr>
+                <td class="rt-td rt-td--dataset" rowspan="2">HalfCheetah-MR</td>
+                <td class="rt-td rt-td--metric">Mean</td>
+                <td class="rt-td rt-td--num">−66.21</td>
+                <td class="rt-td rt-td--num">−0.11</td>
+                <td class="rt-td rt-td--num">18.99</td>
+                <td class="rt-td rt-td--num rt-td--second">434.33</td>
+                <td class="rt-td rt-td--num">279.95</td>
+                <td class="rt-td rt-td--num rt-td--best">525.84</td>
+              </tr>
+              <tr>
+                <td class="rt-td rt-td--metric">CVaR</td>
+                <td class="rt-td rt-td--num">−127.09</td>
+                <td class="rt-td rt-td--num">−1.47</td>
+                <td class="rt-td rt-td--num">−34.09</td>
+                <td class="rt-td rt-td--num rt-td--second">224.73</td>
+                <td class="rt-td rt-td--num">79.93</td>
+                <td class="rt-td rt-td--num rt-td--best">278.65</td>
+              </tr>
+              <!-- Walker2d-MR: best=RADAC, 2nd=FlowQL (Mean) / DiffusionQL (CVaR) -->
+              <tr>
+                <td class="rt-td rt-td--dataset" rowspan="2">Walker2d-MR</td>
+                <td class="rt-td rt-td--metric">Mean</td>
+                <td class="rt-td rt-td--num">−16.90</td>
+                <td class="rt-td rt-td--num">33.59</td>
+                <td class="rt-td rt-td--num">126.94</td>
+                <td class="rt-td rt-td--num rt-td--second">411.36</td>
+                <td class="rt-td rt-td--num">96.88</td>
+                <td class="rt-td rt-td--num rt-td--best">615.94</td>
+              </tr>
+              <tr>
+                <td class="rt-td rt-td--metric">CVaR</td>
+                <td class="rt-td rt-td--num">−51.49</td>
+                <td class="rt-td rt-td--num">−52.63</td>
+                <td class="rt-td rt-td--num">−203.64</td>
+                <td class="rt-td rt-td--num">5.08</td>
+                <td class="rt-td rt-td--num rt-td--second">48.14</td>
+                <td class="rt-td rt-td--num rt-td--best">145.21</td>
+              </tr>
+              <!-- Hopper-MR: best=RADAC, 2nd=FlowQL (Mean) / DiffusionQL (CVaR) -->
+              <tr>
+                <td class="rt-td rt-td--dataset" rowspan="2">Hopper-MR</td>
+                <td class="rt-td rt-td--metric">Mean</td>
+                <td class="rt-td rt-td--num">−16.25</td>
+                <td class="rt-td rt-td--num">−47.83</td>
+                <td class="rt-td rt-td--num">−18.00</td>
+                <td class="rt-td rt-td--num rt-td--second">373.16</td>
+                <td class="rt-td rt-td--num">−2.79</td>
+                <td class="rt-td rt-td--num rt-td--best">385.58</td>
+              </tr>
+              <tr>
+                <td class="rt-td rt-td--metric">CVaR</td>
+                <td class="rt-td rt-td--num">−118.70</td>
+                <td class="rt-td rt-td--num">−160.08</td>
+                <td class="rt-td rt-td--num">−129.25</td>
+                <td class="rt-td rt-td--num">−62.24</td>
+                <td class="rt-td rt-td--num rt-td--second">−51.33</td>
+                <td class="rt-td rt-td--num rt-td--best">−8.16</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-caption reveal">
+          <em>Table 1. Stochastic-D4RL results over 5 seeds. Best per row bold; second-best
+          shaded. RADAC achieves consistently stronger tail returns (CVaR<sub>0.1</sub>) across
+          most tasks.</em>
+        </p>
+        <p class="table-footnote reveal">Full results with standard errors appear in Appendix E.2 of the paper.</p>
+
+        <h3 class="subsection-heading reveal">🔬  OOD Action Rate</h3>
+        <p class="section-prose reveal">
+          RADAC achieves consistently lower out-of-distribution action rates than ORAAC across all
+          tasks, validating that BC regularization on the deployed policy directly suppresses OOD
+          visitation.
+        </p>
+
+        <div class="table2-wrap reveal">
+          <table class="table2" aria-label="OOD action rate comparison between RADAC and ORAAC">
+            <thead>
+              <tr>
+                <th class="rt-th rt-th--left">Task</th>
+                <th class="rt-th rt-th--num rt-th--radac">RADAC (ours)</th>
+                <th class="rt-th rt-th--num">ORAAC</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="rt-td rt-td--dataset">HalfCheetah</td>
+                <td class="rt-td rt-td--num">2.04 ± 0.80</td>
+                <td class="rt-td rt-td--num">6.15 ± 1.5</td>
+              </tr>
+              <tr>
+                <td class="rt-td rt-td--dataset">Walker2d</td>
+                <td class="rt-td rt-td--num">0.75 ± 0.54</td>
+                <td class="rt-td rt-td--num">10.84 ± 1.98</td>
+              </tr>
+              <tr>
+                <td class="rt-td rt-td--dataset">Hopper</td>
+                <td class="rt-td rt-td--num">0.77 ± 0.56</td>
+                <td class="rt-td rt-td--num">2.68 ± 1.01</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-caption reveal">
+          <em>Table 2. OOD action rate (% ± s.e.) on Medium-Expert (κ=3). RADAC is consistently
+          lower, confirming that BC regularization on the deployed policy suppresses OOD
+          visitation.</em>
+        </p>
+      </section>
+      <hr class="section-rule">
+
     </main>
 
     <script>
