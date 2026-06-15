@@ -510,6 +510,27 @@
       </section>
       <hr class="section-rule">
 
+      <section class="main-section" id="citation">
+        <h2 class="reveal">📌  Citation</h2>
+
+        <div class="bibtex-wrap reveal">
+          <button class="bibtex-copy-btn" aria-label="Copy BibTeX to clipboard" onclick="copyBibtex(this)">Copy</button>
+          <pre class="bibtex-block"><code id="bibtex-content">@inproceedings{fukazawa2025ramac,
+  title     = {RAMAC: Multimodal Risk-Aware Offline Reinforcement Learning
+               and the Role of Behavior Regularization},
+  author    = {Fukazawa, Kai and Mundada, Kunal and Soltani, Iman},
+  booktitle = {Forty-Third International Conference on Machine Learning},
+  year      = {2026}
+}</code></pre>
+          <div aria-live="polite" aria-atomic="true" class="bibtex-live-region"></div>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <hr class="section-rule" />
+        <p class="footer-text">© 2026 Kai Fukazawa, Kunal Mundada, Iman Soltani. UC Davis.</p>
+      </footer>
+
     </main>
 
     <script>
@@ -555,6 +576,20 @@
         { threshold: 0.15 }
       );
       revealEls.forEach(el => revealObserver.observe(el));
+
+      // BibTeX copy button
+      function copyBibtex(btn) {
+        const text = document.getElementById('bibtex-content').textContent;
+        navigator.clipboard.writeText(text).then(() => {
+          const live = btn.closest('.bibtex-wrap').querySelector('.bibtex-live-region');
+          btn.textContent = 'Copied ✓';
+          live.textContent = 'BibTeX copied to clipboard';
+          setTimeout(() => {
+            btn.textContent = 'Copy';
+            live.textContent = '';
+          }, 2000);
+        });
+      }
     </script>
   </body>
 </html>
