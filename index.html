@@ -259,6 +259,37 @@
       </section>
       <hr class="section-rule">
 
+      <section class="main-section" id="theory">
+        <p class="theory-eyebrow reveal">Theoretical Insight</p>
+        <h2 class="reveal">📐  Why It Works</h2>
+        <p class="section-prose reveal">
+          Prior-anchored perturbation methods like ORAAC cannot fully eliminate
+          out-of-distribution actions: on thin or nonconvex supports, the anchor ball
+          inevitably overlaps the out-of-support region, leaving a strictly positive OOD
+          probability no matter how the residual policy is trained. RAMAC instead applies
+          BC regularization directly to the deployed generative policy — and we prove this
+          yields a hard upper bound on per-state OOD probability.
+        </p>
+
+        <div class="prop1-box reveal">
+          <p class="prop1-label">OOD Probability Bound</p>
+          <p class="prop1-body">
+            For each state <em>s</em>, the per-state OOD probability
+            δ<sub>s</sub>(π<sub>θ</sub>) satisfies:
+          </p>
+          <div role="math" aria-label="OOD probability bound: delta-s of pi-theta is at most one minus exp of negative KL divergence from beta to pi-theta">
+            $$\delta_s(\pi_\theta) \;\leq\; 1 - \exp\!\left\{
+              -D_{\mathrm{KL}}\!\left(\beta(\cdot\mid s)\,\|\,\pi_\theta(\cdot\mid s)\right)
+            \right\}$$
+          </div>
+          <p class="prop1-interp">
+            <em>Shrinking the forward-KL via BC directly suppresses per-state OOD
+            probability — with the strength of the effect controlled by η in Eq.&nbsp;12.</em>
+          </p>
+        </div>
+      </section>
+      <hr class="section-rule">
+
     </main>
 
     <script>
