@@ -111,19 +111,22 @@
 
     <main class="page-shell">
 
-      <section class="content-section" id="overview">
-        <h2>Overview</h2>
-        <p>
-          RAMAC learns expressive multimodal offline RL policies while reducing
-          unsupported action drift and catastrophic lower-tail outcomes by
-          combining behavior regularization with CVaR optimization.
-        </p>
-        <p>
-          The framework couples a generative actor with a distributional critic,
-          allowing risk-aware policy improvement without discarding the
-          multimodal structure needed for challenging offline control settings.
+      <section class="abstract-section" id="abstract">
+        <p class="abstract__eyebrow">Abstract</p>
+        <p class="abstract__body">
+          Offline RL in safety-critical settings must deliver high returns <em>and</em> avoid
+          catastrophic tail outcomes — yet existing risk-aware methods trade away policy
+          expressiveness to achieve safety, while expressive diffusion and flow policies operate
+          only in risk-neutral settings. RAMAC closes this gap by pairing a generative actor with
+          a distributional critic and training jointly on a BC&nbsp;+&nbsp;CVaR objective: the BC
+          term keeps actions on the data manifold, and the CVaR term shifts probability mass away
+          from low-quantile outcomes. We prove that BC regularization directly bounds
+          out-of-distribution action probability — making it a principled, risk-agnostic safety
+          mechanism — and validate this on Stochastic-D4RL, where RAMAC achieves consistent
+          CVaR<sub>0.1</sub> gains across six tasks while maintaining strong mean returns.
         </p>
       </section>
+      <hr class="section-rule">
 
       <section class="content-section" id="figure">
         <h2>Representative Figure</h2>
