@@ -248,6 +248,19 @@ pre {
   border-color: var(--color-text-primary);
 }
 
+.hero-btn--venue:hover,
+.hero-btn--venue:focus-visible {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.venue-logo {
+  height: 14px;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .hero-btn:focus-visible {
   outline: 2px solid var(--color-text-primary);
   outline-offset: 2px;

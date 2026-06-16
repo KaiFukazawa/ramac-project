@@ -51,11 +51,6 @@
 
     <header class="hero" id="hero">
       <div class="hero__inner">
-        <span
-          class="hero__badge"
-          title="Forty-Third International Conference on Machine Learning"
-        >ICML 2026</span>
-
         <h1 class="hero__title">
           RAMAC: Multimodal Risk-Aware Offline Reinforcement Learning
           and the Role of Behavior Regularization
@@ -94,6 +89,9 @@
             </svg>
             Code
           </a>
+          <a class="hero-btn hero-btn--outline hero-btn--venue" href="https://icml.cc/virtual/2026/poster/62421" target="_blank" rel="noopener">
+            ICML 2026
+          </a>
         </nav>
 
         <div class="hero__tldr">
@@ -129,7 +127,7 @@
       <hr class="section-rule">
 
       <section class="main-section" id="gap">
-        <h2>⚠️  The Gap</h2>
+        <h2>The Gap</h2>
         <p class="section-prose">
           Diffusion and flow policies are the most expressive tools in offline RL — but they
           optimize mean return only, leaving catastrophic lower-tail outcomes entirely
@@ -220,7 +218,7 @@
       <hr class="section-rule">
 
       <section class="main-section" id="approach">
-        <h2 class="reveal">🔧  Our Approach</h2>
+        <h2 class="reveal">Our Approach</h2>
         <p class="section-prose reveal">
           RAMAC operates in two stages. A <strong>distributional critic</strong> (IQN) learns
           the full conditional return distribution, giving access to calibrated lower-tail
@@ -261,7 +259,7 @@
 
       <section class="main-section" id="theory">
         <p class="theory-eyebrow reveal">Theoretical Insight</p>
-        <h2 class="reveal">📐  Why It Works</h2>
+        <h2 class="reveal">Why It Works</h2>
         <p class="section-prose reveal">
           Prior-anchored perturbation methods like ORAAC cannot fully eliminate
           out-of-distribution actions: on thin or nonconvex supports, the anchor ball
@@ -291,7 +289,7 @@
       <hr class="section-rule">
 
       <section class="main-section" id="experiments">
-        <h2 class="reveal">🧪  Experiments</h2>
+        <h2 class="reveal">Experiments</h2>
         <p class="section-prose reveal">
           We evaluate RADAC on <strong>Stochastic-D4RL</strong> — six standard D4RL locomotion
           datasets augmented with rare heavy-tailed penalties across HalfCheetah, Hopper, and
@@ -299,7 +297,7 @@
           mean return and episodic CVaR<sub>0.1</sub>.
         </p>
 
-        <h3 class="subsection-heading reveal">🎯  2-D Risky Bandit</h3>
+        <h3 class="subsection-heading reveal">2-D Risky Bandit</h3>
         <p class="section-prose reveal">
           A 2-D contextual bandit isolates exactly what makes risk-aware offline RL hard: the
           ground truth has a <strong>safe center</strong> mode (moderate reward, no catastrophic
@@ -320,7 +318,7 @@
           multimodality.</em>
         </p>
 
-        <h3 class="subsection-heading reveal">📊  Stochastic-D4RL Benchmark</h3>
+        <h3 class="subsection-heading reveal">Stochastic-D4RL Benchmark</h3>
 
         <div class="results-wrap reveal">
           <table class="results-table" aria-label="Stochastic-D4RL benchmark results over 5 seeds">
@@ -467,7 +465,7 @@
         </p>
         <p class="table-footnote reveal">Full results with standard errors appear in Appendix E.2 of the paper.</p>
 
-        <h3 class="subsection-heading reveal">🔬  OOD Action Rate</h3>
+        <h3 class="subsection-heading reveal">OOD Action Rate</h3>
         <p class="section-prose reveal">
           RADAC achieves consistently lower out-of-distribution action rates than ORAAC across all
           tasks, validating that BC regularization on the deployed policy directly suppresses OOD
@@ -511,7 +509,7 @@
       <hr class="section-rule">
 
       <section class="main-section" id="citation">
-        <h2 class="reveal">📌  Citation</h2>
+        <h2 class="reveal">Citation</h2>
 
         <div class="bibtex-wrap reveal">
           <button class="bibtex-copy-btn" aria-label="Copy BibTeX to clipboard" onclick="copyBibtex(this)">Copy</button>
