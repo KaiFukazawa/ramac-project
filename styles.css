@@ -314,11 +314,9 @@ pre {
   height: auto;
 }
 
-.overview-section {
-  padding: 54px 0;
-}
-
 .overview-box {
+  max-width: 912px;
+  margin: 24px auto 0;
   padding: 20px 28px 18px;
   border: 2px solid #0F1117;
   border-radius: 12px;
@@ -952,11 +950,8 @@ pre {
     font-size: 13px;
   }
 
-  .overview-section {
-    padding: 40px 0;
-  }
-
   .overview-box {
+    margin-top: 22px;
     padding: 18px 20px;
   }
 
