@@ -184,7 +184,7 @@ pre {
 .hero__authors {
   margin: 28px 0 0;
   font-family: "DM Sans", sans-serif;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 500;
   color: var(--color-hero-deep);
 }
@@ -192,7 +192,7 @@ pre {
 .hero__affiliations {
   margin: 8px 0 0;
   font-family: "DM Sans", sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   color: var(--color-text-secondary);
 }
 
@@ -220,7 +220,7 @@ pre {
   background: transparent;
   color: var(--color-hero-deep);
   font-family: "DM Sans", sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   text-decoration: none;
   transition: color 150ms ease, text-decoration-color 150ms ease;
