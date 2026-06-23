@@ -33,14 +33,14 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=figure-labels-v1" />
+    <link rel="stylesheet" href="styles.css?v=overview-section-v1" />
   </head>
   <body>
-    <a href="#abstract" class="skip-link">Skip to content</a>
+    <a href="#overview" class="skip-link">Skip to content</a>
 
     <nav class="sticky-nav" id="sticky-nav" aria-label="Page sections">
       <div class="sticky-nav__inner">
-        <a href="#abstract" class="nav-link">Abstract</a>
+        <a href="#overview" class="nav-link">Overview</a>
         <a href="#gap" class="nav-link">The Gap</a>
         <a href="#approach" class="nav-link">Our Approach</a>
         <a href="#theory" class="nav-link">Why It Works</a>
@@ -112,15 +112,21 @@
           </div>
         </figure>
 
-        <div class="hero__explainer" aria-label="How RAMAC works">
-          <p class="hero__explainer-kicker">
-            <svg class="hero__explainer-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+      </div>
+    </header>
+
+    <main class="page-shell">
+
+      <section class="overview-section" id="overview" aria-label="Implementation overview">
+        <div class="overview-box">
+          <p class="overview-box__kicker">
+            <svg class="overview-box__icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
               <path d="M7 1.2 12.2 7 7 12.8 1.8 7 7 1.2Z" fill="currentColor" opacity="0.18"/>
               <path d="M7 3.1 10.5 7 7 10.9 3.5 7 7 3.1Z" fill="currentColor"/>
             </svg>
             Implementation overview:
           </p>
-          <p class="hero__explainer-body">
+          <p class="overview-box__body">
             RAMAC extends behavior-regularized actor-critic by directly training an expressive
             generative policy while a distributional critic learns lower-tail risk. Instantiated
             with <span class="risk-term">CVaR</span> to measure the worst 10% outcomes, the critic's
@@ -129,25 +135,6 @@
             probability away from catastrophic outcomes.
           </p>
         </div>
-      </div>
-    </header>
-
-    <main class="page-shell">
-
-      <section class="abstract-section" id="abstract">
-        <p class="abstract__eyebrow">Abstract</p>
-        <p class="abstract__body">
-          Offline RL in safety-critical settings must deliver high returns <em>and</em> avoid
-          catastrophic tail outcomes — yet existing risk-aware methods trade away policy
-          expressiveness to achieve safety, while expressive diffusion and flow policies operate
-          only in risk-neutral settings. RAMAC closes this gap by pairing a generative actor with
-          a distributional critic and training jointly on a BC&nbsp;+&nbsp;CVaR objective: the BC
-          term keeps actions on the data manifold, and the CVaR term shifts probability mass away
-          from low-quantile outcomes. We prove that BC regularization directly bounds
-          out-of-distribution action probability — making it a principled, risk-agnostic safety
-          mechanism — and validate this on Stochastic-D4RL, where RAMAC achieves consistent
-          CVaR<sub>0.1</sub> gains across six tasks while maintaining strong mean returns.
-        </p>
       </section>
       <hr class="section-rule">
 
