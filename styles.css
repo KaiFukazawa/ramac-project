@@ -20,7 +20,7 @@
   --text-xl:   1.5rem;
   --text-2xl:  2rem;
   --text-3xl:  2.75rem;
-  --text-hero: clamp(1.85rem, 2.5vw, 2rem);
+  --text-hero: clamp(1.8rem, 2.35vw, 1.9rem);
 
   /* Layout */
   --width-content: 860px;
@@ -147,7 +147,7 @@ pre {
 }
 
 .hero__inner {
-  max-width: 1180px;
+  max-width: 1040px;
   margin: 0 auto;
 }
 
@@ -172,7 +172,7 @@ pre {
   font-size: var(--text-hero);
   line-height: 1.16;
   letter-spacing: -0.02em;
-  max-width: 1180px;
+  max-width: 1040px;
   color: #1D9FD0;
 }
 
