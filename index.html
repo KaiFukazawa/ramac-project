@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=overview-section-v1" />
+    <link rel="stylesheet" href="styles.css?v=compact-labels-v1" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -89,17 +89,13 @@
             <div class="hero__figure-label">
               <span class="hero__figure-heading hero__figure-heading--actor">
                 Expressive Generative Actor
-              </span>
-              <span class="hero__figure-math">
-                \(a\sim\pi_\theta(\cdot\mid s),\quad a=\psi_\theta(s,z),\;z\sim\mathcal N(0,I)\)
+                <span class="hero__figure-symbol">\(\pi_\theta(s,z)\)</span>
               </span>
             </div>
             <div class="hero__figure-label">
               <span class="hero__figure-heading hero__figure-heading--critic">
                 Distributional Critic
-              </span>
-              <span class="hero__figure-math">
-                \(Z_\phi(s,a;\tau)\approx F^{-1}_{Z^\pi(s,a)}(\tau)\)
+                <span class="hero__figure-symbol">\(Z_\phi(s,a,\tau)\)</span>
               </span>
             </div>
           </div>
