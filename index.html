@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=hero-labels-v1" />
+    <link rel="stylesheet" href="styles.css?v=hero-meta-v1" />
   </head>
   <body>
     <a href="#abstract" class="skip-link">Skip to content</a>
@@ -123,7 +123,7 @@
           <p class="hero__explainer-body">
             RAMAC extends behavior-regularized actor-critic by directly training an expressive
             generative policy while a distributional critic learns lower-tail risk. Instantiated
-            with <span class="risk-term">CVaR</span> over the worst alpha% outcomes, the critic's
+            with <span class="risk-term">CVaR</span> to measure the worst 10% outcomes, the critic's
             tail-sensitive signal guides mode reweighting in the same actor update, giving a
             simple single-policy objective that stays close to offline data support while shifting
             probability away from catastrophic outcomes.

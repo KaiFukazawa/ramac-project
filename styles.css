@@ -190,9 +190,9 @@ pre {
 }
 
 .hero__affiliations {
-  margin: 8px 0 0;
+  margin: 10px 0 0;
   font-family: "DM Sans", sans-serif;
-  font-size: 17px;
+  font-size: 18px;
   color: var(--color-text-secondary);
 }
 
@@ -207,7 +207,7 @@ pre {
   align-items: center;
   gap: 22px;
   flex-wrap: wrap;
-  margin-top: 34px;
+  margin-top: 22px;
 }
 
 .hero-btn {
