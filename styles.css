@@ -190,9 +190,6 @@ pre {
 }
 
 .hero__affiliations {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
   margin: 8px 0 0;
   font-family: "DM Sans", sans-serif;
   font-size: 17px;
