@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=hero-annotated-figure-v1" />
+    <link rel="stylesheet" href="styles.css?v=hero-annotated-figure-v2" />
   </head>
   <body>
     <a href="#abstract" class="skip-link">Skip to content</a>
@@ -87,14 +87,31 @@
         <figure class="hero__figure">
           <div class="hero__figure-labels" aria-hidden="true">
             <div class="hero__figure-label">
-              Expressive<br />
-              Generative Actor
+              <span class="hero__figure-heading hero__figure-heading--actor">
+                Expressive Generative Actor
+              </span>
+              <span class="hero__figure-math">
+                \(\pi_\theta(a\mid s),\quad a=\psi_\theta(s,z)\)
+              </span>
+              <span class="hero__figure-math">
+                \(z\sim\mathcal N(0,I)\)
+              </span>
             </div>
             <div class="hero__figure-label">
-              Distributional Critic
+              <span class="hero__figure-heading hero__figure-heading--critic">
+                Distributional Critic
+              </span>
+              <span class="hero__figure-math">
+                \(Z_\phi(s,a;\tau)\approx F^{-1}_{Z^\pi(s,a)}(\tau)\)
+              </span>
+              <span class="hero__figure-math">
+                \(Q^\pi(s,a)=\mathbb E[Z^\pi(s,a)]\)
+              </span>
               <span class="hero__figure-risk">
-                lower-tail risk = CVaR<br />
-                <span>(Conditional Value at Risk)</span>
+                CVaR: Conditional Value at Risk
+              </span>
+              <span class="hero__figure-math">
+                \(\mathrm{CVaR}_\alpha=\frac{1}{\alpha}\int_0^\alpha Z_\phi(s,a;\tau)\,d\tau\)
               </span>
             </div>
           </div>
