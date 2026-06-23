@@ -184,7 +184,7 @@ pre {
 .hero__authors {
   margin: 28px 0 0;
   font-family: "DM Sans", sans-serif;
-  font-size: 19px;
+  font-size: 21px;
   font-weight: 500;
   color: var(--color-hero-deep);
 }
@@ -192,7 +192,7 @@ pre {
 .hero__affiliations {
   margin: 10px 0 0;
   font-family: "DM Sans", sans-serif;
-  font-size: 19px;
+  font-size: 21px;
   color: var(--color-text-secondary);
 }
 
@@ -220,7 +220,7 @@ pre {
   background: transparent;
   color: var(--color-hero-deep);
   font-family: "DM Sans", sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   text-decoration: none;
   transition: color 150ms ease, text-decoration-color 150ms ease;
@@ -274,7 +274,7 @@ pre {
 }
 
 .hero__figure-label:nth-child(2) {
-  transform: translateY(0);
+  transform: translate(18px, 0);
 }
 
 .hero__figure-heading {
@@ -960,6 +960,10 @@ pre {
     grid-template-rows: none;
     gap: 16px;
     text-align: left;
+    transform: none;
+  }
+
+  .hero__figure-label:nth-child(2) {
     transform: none;
   }
 
