@@ -264,7 +264,7 @@ pre {
   display: grid;
   grid-template-rows: 1fr 1fr;
   text-align: left;
-  transform: translateY(18px);
+  transform: none;
 }
 
 .hero__figure-label {
@@ -273,8 +273,12 @@ pre {
   line-height: 1.35;
 }
 
+.hero__figure-label:nth-child(1) {
+  transform: translateY(28px);
+}
+
 .hero__figure-label:nth-child(2) {
-  transform: translate(34px, 24px);
+  transform: none;
 }
 
 .hero__figure-heading {
@@ -300,6 +304,7 @@ pre {
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 0;
+  text-align: center;
   color: #0F1117;
 }
 
@@ -937,6 +942,10 @@ pre {
     grid-template-rows: none;
     gap: 16px;
     text-align: left;
+    transform: none;
+  }
+
+  .hero__figure-label:nth-child(1) {
     transform: none;
   }
 
