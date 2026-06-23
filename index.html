@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=hero-annotated-figure-v4" />
+    <link rel="stylesheet" href="styles.css?v=hero-annotated-figure-v5" />
   </head>
   <body>
     <a href="#abstract" class="skip-link">Skip to content</a>
@@ -91,7 +91,7 @@
                 Expressive Generative Actor
               </span>
               <span class="hero__figure-math">
-                \(\pi_\theta(a\mid s)\): diffusion / flow policy
+                \(z\sim\mathcal N(0,I),\quad a=\psi_\theta(s,z)\sim\pi_\theta(\cdot\mid s)\)
               </span>
             </div>
             <div class="hero__figure-label">
@@ -111,7 +111,9 @@
             />
             <div class="hero__risk-note" aria-hidden="true">
               <span class="hero__risk-label">Distributional critic → lower-tail risk measurement</span>
-              <span class="hero__risk-cvar">lower-tail risk ≈ CVaR</span>
+              <span class="hero__risk-tail">
+                lower-tail risk instantiated by <span>CVaR</span>
+              </span>
               <span class="hero__risk-math">
                 \(\mathrm{CVaR}_\alpha=\frac{1}{\alpha}\int_0^\alpha Z_\phi(s,a;\tau)\,d\tau\)
               </span>

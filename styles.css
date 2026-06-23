@@ -264,13 +264,17 @@ pre {
   display: grid;
   grid-template-rows: 1fr 1fr;
   text-align: left;
-  transform: translateY(18px);
+  transform: translateY(8px);
 }
 
 .hero__figure-label {
   align-self: center;
   font-family: "DM Sans", sans-serif;
   line-height: 1.35;
+}
+
+.hero__figure-label:nth-child(2) {
+  transform: translateY(-12px);
 }
 
 .hero__figure-heading {
@@ -319,14 +323,18 @@ pre {
   display: block;
   font-size: 14px;
   font-weight: 700;
-  color: #2E8B57;
+  color: var(--color-text-primary);
 }
 
-.hero__risk-cvar {
-  display: inline-block;
+.hero__risk-tail {
+  display: block;
   margin-top: 3px;
   font-size: 15px;
   font-weight: 800;
+  color: var(--color-text-primary);
+}
+
+.hero__risk-tail span {
   color: #FF6666;
 }
 
@@ -958,7 +966,7 @@ pre {
   }
 
   .hero__risk-label,
-  .hero__risk-cvar,
+  .hero__risk-tail,
   .hero__risk-math {
     font-size: 13px;
   }
