@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=hero-annotated-figure-v3" />
+    <link rel="stylesheet" href="styles.css?v=hero-annotated-figure-v4" />
   </head>
   <body>
     <a href="#abstract" class="skip-link">Skip to content</a>
@@ -91,10 +91,7 @@
                 Expressive Generative Actor
               </span>
               <span class="hero__figure-math">
-                \(\pi_\theta(a\mid s),\quad a=\psi_\theta(s,z)\)
-              </span>
-              <span class="hero__figure-math">
-                \(z\sim\mathcal N(0,I)\)
+                \(\pi_\theta(a\mid s)\): diffusion / flow policy
               </span>
             </div>
             <div class="hero__figure-label">
@@ -104,19 +101,22 @@
               <span class="hero__figure-math">
                 \(Z_\phi(s,a;\tau)\approx F^{-1}_{Z^\pi(s,a)}(\tau)\)
               </span>
-              <span class="hero__figure-risk">
-                CVaR: Conditional Value at Risk
-              </span>
-              <span class="hero__figure-math">
+            </div>
+          </div>
+          <div class="hero__figure-visual">
+            <img
+              src="assets/ramac_evolutions.png"
+              alt="Conceptual RAMAC learning dynamics showing a generative policy shifting probability mass away from low-CVaR regions while a distributional critic models lower-tail returns"
+              class="hero__figure-img"
+            />
+            <div class="hero__risk-note" aria-hidden="true">
+              <span class="hero__risk-label">Distributional critic → lower-tail risk measurement</span>
+              <span class="hero__risk-cvar">lower-tail risk ≈ CVaR</span>
+              <span class="hero__risk-math">
                 \(\mathrm{CVaR}_\alpha=\frac{1}{\alpha}\int_0^\alpha Z_\phi(s,a;\tau)\,d\tau\)
               </span>
             </div>
           </div>
-          <img
-            src="assets/ramac_evolutions.png"
-            alt="Conceptual RAMAC learning dynamics showing a generative policy shifting probability mass away from low-CVaR regions while a distributional critic models lower-tail returns"
-            class="hero__figure-img"
-          />
         </figure>
       </div>
     </header>
