@@ -274,7 +274,7 @@ pre {
 }
 
 .hero__figure-label:nth-child(2) {
-  transform: translateY(-32px);
+  transform: translateY(0);
 }
 
 .hero__figure-heading {
@@ -327,11 +327,10 @@ pre {
   align-items: center;
   gap: 8px;
   margin: 0 0 8px;
-  font-family: "DM Sans", sans-serif;
-  font-size: 13px;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: 19px;
   font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: -0.018em;
   color: var(--color-hero-deep);
 }
 
@@ -975,6 +974,10 @@ pre {
   .hero__explainer {
     margin-top: 22px;
     padding-top: 18px;
+  }
+
+  .hero__explainer-kicker {
+    font-size: 17px;
   }
 
   .hero__explainer-body {

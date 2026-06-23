@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=critic-label-v1" />
+    <link rel="stylesheet" href="styles.css?v=hero-labels-v1" />
   </head>
   <body>
     <a href="#abstract" class="skip-link">Skip to content</a>
@@ -91,7 +91,7 @@
                 Expressive Generative Actor
               </span>
               <span class="hero__figure-math">
-                \(z \xrightarrow{\;\psi_\theta(\cdot\,;s)\;} a \sim \pi_\theta(\cdot\mid s)\)
+                \(\pi_\theta(\cdot\mid s)=\mathrm{Law}(\psi_\theta(s,z)),\; z\sim\mathcal N(0,I)\)
               </span>
             </div>
             <div class="hero__figure-label">
@@ -123,10 +123,10 @@
           <p class="hero__explainer-body">
             RAMAC extends behavior-regularized actor-critic by directly training an expressive
             generative policy while a distributional critic learns lower-tail risk. Instantiated
-            with <span class="risk-term">CVaR</span> over the worst alpha% outcomes, this
-            risk signal is backpropagated through the same actor, giving a simple single-policy
-            update that stays close to offline data support while shifting probability away from
-            catastrophic outcomes.
+            with <span class="risk-term">CVaR</span> over the worst alpha% outcomes, the critic's
+            tail-sensitive signal guides mode reweighting in the same actor update, giving a
+            simple single-policy objective that stays close to offline data support while shifting
+            probability away from catastrophic outcomes.
           </p>
         </div>
       </div>
