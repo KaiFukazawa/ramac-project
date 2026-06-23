@@ -20,7 +20,7 @@
   --text-xl:   1.5rem;
   --text-2xl:  2rem;
   --text-3xl:  2.75rem;
-  --text-hero: clamp(1.95rem, 3vw, 2.25rem);
+  --text-hero: clamp(1.9rem, 2.7vw, 2.1rem);
 
   /* Layout */
   --width-content: 860px;
@@ -147,7 +147,7 @@ pre {
 }
 
 .hero__inner {
-  max-width: 1180px;
+  max-width: 1320px;
   margin: 0 auto;
 }
 
@@ -172,8 +172,12 @@ pre {
   font-size: var(--text-hero);
   line-height: 1.16;
   letter-spacing: -0.02em;
-  max-width: 1180px;
+  max-width: 1320px;
   color: #1D9FD0;
+}
+
+.hero__title-main {
+  white-space: nowrap;
 }
 
 .hero__authors {
@@ -838,6 +842,10 @@ pre {
 
   .hero__title {
     font-size: max(2rem, var(--text-hero));
+  }
+
+  .hero__title-main {
+    white-space: normal;
   }
 
   .hero__affiliations {
