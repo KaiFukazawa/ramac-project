@@ -274,7 +274,7 @@ pre {
 }
 
 .hero__figure-label:nth-child(2) {
-  transform: translateY(-12px);
+  transform: translateY(-48px);
 }
 
 .hero__figure-heading {
