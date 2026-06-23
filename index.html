@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=figure-explainer-v2" />
+    <link rel="stylesheet" href="styles.css?v=figure-explainer-v3" />
   </head>
   <body>
     <a href="#abstract" class="skip-link">Skip to content</a>
@@ -113,12 +113,22 @@
         </figure>
 
         <div class="hero__explainer" aria-label="How RAMAC works">
+          <p class="hero__explainer-kicker">
+            <svg class="hero__explainer-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+              <path d="M7 1.2 12.2 7 7 12.8 1.8 7 7 1.2Z" fill="currentColor" opacity="0.18"/>
+              <path d="M7 3.1 10.5 7 7 10.9 3.5 7 7 3.1Z" fill="currentColor"/>
+            </svg>
+            Implementation overview:
+          </p>
           <p class="hero__explainer-body">
             RAMAC extends behavior-regularized actor-critic by directly training an expressive
             generative policy while a distributional critic learns lower-tail risk. Instantiated
-            with <span class="risk-term">CVaR</span>, this risk signal is backpropagated through the
-            same actor, giving a simple single-policy update that stays close to offline data
-            support while shifting probability away from catastrophic outcomes.
+            with <span class="risk-term">CVaR</span>
+            <span class="inline-formula">\( \mathrm{CVaR}_\alpha =
+            \frac{1}{\alpha}\int_0^\alpha Z_\phi(s,a;\tau)\,d\tau \)</span>,
+            this risk signal is backpropagated through the same actor, giving a simple
+            single-policy update that stays close to offline data support while shifting
+            probability away from catastrophic outcomes.
           </p>
           <div class="hero__explainer-formula">
             \[
@@ -126,11 +136,7 @@
               =
               \mathcal L_{\mathrm{BC}}
               +
-              \eta\,\mathcal L_{\mathrm{Risk}},
-              \qquad
-              {\color{#FF6666}{\mathrm{CVaR}_\alpha}}
-              =
-              \frac{1}{\alpha}\int_0^\alpha Z_\phi(s,a;\tau)\,d\tau
+              \eta\,\mathcal L_{\mathrm{Risk}}
             \]
           </div>
         </div>
