@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=overview-v1" />
+    <link rel="stylesheet" href="styles.css?v=figure-explainer-v2" />
   </head>
   <body>
     <a href="#abstract" class="skip-link">Skip to content</a>
@@ -111,33 +111,33 @@
             />
           </div>
         </figure>
+
+        <div class="hero__explainer" aria-label="How RAMAC works">
+          <p class="hero__explainer-body">
+            RAMAC extends behavior-regularized actor-critic by directly training an expressive
+            generative policy while a distributional critic learns lower-tail risk. Instantiated
+            with <span class="risk-term">CVaR</span>, this risk signal is backpropagated through the
+            same actor, giving a simple single-policy update that stays close to offline data
+            support while shifting probability away from catastrophic outcomes.
+          </p>
+          <div class="hero__explainer-formula">
+            \[
+              \mathcal L_\pi
+              =
+              \mathcal L_{\mathrm{BC}}
+              +
+              \eta\,\mathcal L_{\mathrm{Risk}},
+              \qquad
+              {\color{#FF6666}{\mathrm{CVaR}_\alpha}}
+              =
+              \frac{1}{\alpha}\int_0^\alpha Z_\phi(s,a;\tau)\,d\tau
+            \]
+          </div>
+        </div>
       </div>
     </header>
 
     <main class="page-shell">
-      <section class="overview-card" aria-labelledby="overview-title">
-        <p class="overview-card__eyebrow" id="overview-title">Overview</p>
-        <p class="overview-card__body">
-          RAMAC is a simple extension of behavior-regularized actor-critic: it directly trains
-          an expressive generative policy while a distributional critic learns lower-tail risk.
-          Instantiated with <span class="risk-term">CVaR</span>, this risk signal is backpropagated
-          through the same actor, yielding a single-policy update that stays close to offline data
-          support while shifting probability away from catastrophic outcomes.
-        </p>
-        <div class="overview-card__formula" aria-label="RAMAC actor objective and CVaR estimate">
-          \[
-            \mathcal L_\pi
-            =
-            \mathcal L_{\mathrm{BC}}
-            +
-            \eta\,\mathcal L_{\mathrm{Risk}},
-            \qquad
-            \mathrm{CVaR}_\alpha
-            =
-            \frac{1}{\alpha}\int_0^\alpha Z_\phi(s,a;\tau)\,d\tau
-          \]
-        </div>
-      </section>
 
       <section class="abstract-section" id="abstract">
         <p class="abstract__eyebrow">Abstract</p>
