@@ -20,7 +20,7 @@
   --text-xl:   1.5rem;
   --text-2xl:  2rem;
   --text-3xl:  2.75rem;
-  --text-hero: clamp(2.05rem, 4vw, 2.75rem);
+  --text-hero: clamp(1.95rem, 3vw, 2.25rem);
 
   /* Layout */
   --width-content: 860px;
@@ -147,7 +147,7 @@ pre {
 }
 
 .hero__inner {
-  max-width: var(--width-content);
+  max-width: 1180px;
   margin: 0 auto;
 }
 
@@ -170,9 +170,9 @@ pre {
   font-family: "Libre Baskerville", Georgia, serif;
   font-weight: 700;
   font-size: var(--text-hero);
-  line-height: 1.12;
-  letter-spacing: -0.025em;
-  max-width: 900px;
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+  max-width: 1180px;
   color: #1D9FD0;
 }
 
@@ -257,37 +257,6 @@ pre {
 .hero-btn:focus-visible {
   outline: 2px solid var(--color-text-primary);
   outline-offset: 2px;
-}
-
-.hero__tldr {
-  margin-top: 40px;
-}
-
-.hero__rule {
-  border: none;
-  border-top: 1px solid var(--color-border);
-  max-width: 320px;
-  margin: 24px auto;
-}
-
-.hero__tldr-label {
-  margin: 0 0 8px;
-  font-family: "DM Sans", sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-
-.hero__tldr-body {
-  margin: 0 auto;
-  font-family: "Source Serif 4", Georgia, serif;
-  font-size: 18px;
-  font-style: italic;
-  color: var(--color-text-secondary);
-  max-width: 640px;
-  line-height: 1.65;
 }
 
 /* ─── Section rule ────────────────────────────────────────── */
