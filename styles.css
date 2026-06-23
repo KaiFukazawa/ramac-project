@@ -250,6 +250,16 @@ pre {
   outline-offset: 2px;
 }
 
+.hero__figure {
+  max-width: 780px;
+  margin: 44px auto 0;
+}
+
+.hero__figure-img {
+  width: 100%;
+  height: auto;
+}
+
 /* ─── Section rule ────────────────────────────────────────── */
 
 .section-rule {
