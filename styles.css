@@ -375,7 +375,7 @@ pre {
 /* ─── Page shell ──────────────────────────────────────────── */
 
 .page-shell {
-  width: min(calc(100% - 2rem), var(--width-content));
+  width: min(calc(100% - 2rem), 1040px);
   margin: 0 auto;
   padding: 0 0 5rem;
 }
@@ -471,7 +471,8 @@ pre {
 }
 
 .page-shell > .main-section:first-child {
-  padding-top: 48px;
+  border-top: 1px solid rgba(15, 17, 23, 0.14);
+  padding-top: 24px;
 }
 
 .main-section h2 {
