@@ -550,6 +550,8 @@ pre {
 
 .gap-box__title {
   color: #E31B23 !important;
+  font-size: 14px !important;
+  line-height: 1.32;
 }
 
 .gap-word {
