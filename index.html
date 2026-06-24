@@ -135,11 +135,9 @@
         <ul class="gap-lead-list">
           <li>
             In safety-critical offline RL, policies should be evaluated not only by mean return,
-            but also by lower-tail risk. For example, a driving policy that reaches the destination
-            faster by speeding may look strong on average, while a rare crash event makes the worst
-            outcomes unacceptable. This becomes especially important under stochastic environment
-            dynamics, where rare hazards, noisy transitions, or unmodeled uncertainty can dominate
-            deployment safety.
+            but also by lower-tail risk. This becomes especially important under stochastic
+            environment dynamics, where rare hazards, noisy transitions, or unmodeled uncertainty
+            can dominate deployment safety.
           </li>
           <li>
             Classical risk-aware offline RL has addressed lower-tail failures and OOD action risk
