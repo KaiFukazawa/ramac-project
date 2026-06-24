@@ -396,7 +396,7 @@ pre {
   margin: 0 0 1rem;
   font-family: "Libre Baskerville", Georgia, serif;
   font-weight: 700;
-  font-size: var(--text-2xl);
+  font-size: var(--text-hero);
   letter-spacing: -0.01em;
   color: var(--color-text-primary);
 }
@@ -479,7 +479,7 @@ pre {
   margin: 0 0 24px;
   font-family: "Libre Baskerville", Georgia, serif;
   font-weight: 700;
-  font-size: var(--text-2xl);
+  font-size: var(--text-hero);
   letter-spacing: -0.01em;
   color: var(--color-text-primary);
 }
