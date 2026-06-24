@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=gap-trim-v11" />
+    <link rel="stylesheet" href="styles.css?v=overview-copy-v12" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -118,8 +118,8 @@
           </p>
           <p class="overview-box__body">
             RAMAC extends behavior-regularized actor-critic by turning an expressive diffusion/flow
-            policy into a risk-aware offline RL actor. A distributional critic estimates not just
-            the mean value, but the lower tail of possible returns. Instantiated with
+            policy into a risk-aware offline RL actor. A distributional critic estimates the lower
+            tail of possible returns. Instantiated with
             <span class="risk-term">CVaR</span> to measure the worst 10% of outcomes, the critic's
             lower-tail signal guides mode reweighting within the same actor update, yielding a
             simple single-policy training objective that preserves data-supported modes while

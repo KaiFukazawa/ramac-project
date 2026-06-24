@@ -351,11 +351,11 @@ pre {
 
 .overview-box__body {
   margin: 0;
-  font-family: "Libre Baskerville", Georgia, serif;
-  font-size: 19px;
-  font-weight: 700;
-  line-height: 1.6;
-  letter-spacing: -0.018em;
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
   color: #0F1117;
 }
 
