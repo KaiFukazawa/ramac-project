@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=gap-logic-v1" />
+    <link rel="stylesheet" href="styles.css?v=gap-logic-v2" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -152,16 +152,11 @@
           </li>
         </ul>
 
-        <p class="gap-question">
-          These two trends lead to the core question:
-          <span>Can we obtain safety without sacrificing expressiveness?</span>
-        </p>
-
         <div class="gap-box">
           <div class="gap-box__item">
             <h3>
               <span class="gap-box__icon" aria-hidden="true">×</span>
-              Gap 1: Risk-awareness appears to fight expressiveness.
+              <span><span class="gap-word">Gap 1:</span> Risk-awareness appears to fight expressiveness.</span>
             </h3>
             <p>
               Pessimistic model-free/model-based methods and prior-anchored policy updates can be
@@ -172,7 +167,7 @@
           <div class="gap-box__item">
             <h3>
               <span class="gap-box__icon" aria-hidden="true">×</span>
-              Gap 2: Expressive generative policies are rarely used for risk-awareness.
+              <span><span class="gap-word">Gap 2:</span> Expressive generative policies are rarely used for risk-awareness.</span>
             </h3>
             <p>
               Diffusion and flow policies have mostly been treated as risk-neutral offline RL
@@ -181,6 +176,11 @@
             </p>
           </div>
         </div>
+
+        <p class="gap-question">
+          These gaps lead to the core research question:
+          <span>Can we obtain safety without sacrificing expressiveness?</span>
+        </p>
 
         <div class="sota-wrap">
           <table class="sota-table" aria-label="Comparison of offline RL paradigms on three desiderata">
