@@ -310,6 +310,7 @@ pre {
 
 .hero__figure-symbol--critic {
   font-size: 13px;
+  transform: translateX(-14px);
 }
 
 .hero__figure-visual {
