@@ -398,7 +398,7 @@ pre {
   font-weight: 700;
   font-size: var(--text-hero);
   letter-spacing: -0.01em;
-  color: var(--color-text-primary);
+  color: #177EAD;
 }
 
 .content-section h3 {
@@ -481,7 +481,7 @@ pre {
   font-weight: 700;
   font-size: var(--text-hero);
   letter-spacing: -0.01em;
-  color: var(--color-text-primary);
+  color: #177EAD;
 }
 
 .section-prose {
@@ -528,7 +528,7 @@ pre {
 .gap-box__item h3 {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 10px;
   margin: 0 0 10px;
   font-family: "Libre Baskerville", Georgia, serif;
   font-size: 18px;
@@ -541,9 +541,9 @@ pre {
 .gap-box__icon {
   flex: 0 0 auto;
   font-family: "DM Sans", sans-serif;
-  font-size: 23px;
+  font-size: 32px;
   font-weight: 800;
-  line-height: 1.05;
+  line-height: 0.9;
   color: var(--color-risk);
 }
 
@@ -554,17 +554,21 @@ pre {
   font-weight: 700;
   line-height: 1.58;
   letter-spacing: -0.018em;
-  color: #0F1117;
+  color: var(--color-risk);
 }
 
 .gap-question {
-  margin: 30px 0 0;
+  margin: 24px 0 0;
   font-family: "Libre Baskerville", Georgia, serif;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 800;
   line-height: 1.4;
   letter-spacing: -0.02em;
   color: #0F1117;
+}
+
+.gap-question span {
+  color: #177EAD;
 }
 
 /* ─── SOTA comparison table ───────────────────────────────── */

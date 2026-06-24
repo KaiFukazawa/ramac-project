@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=gap-style-v1" />
+    <link rel="stylesheet" href="styles.css?v=gap-logic-v1" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -137,11 +137,9 @@
             In safety-critical offline RL, policies should be evaluated not only by mean return,
             but also by lower-tail risk. For example, a driving policy that reaches the destination
             faster by speeding may look strong on average, while a rare crash event makes the worst
-            outcomes unacceptable.
-          </li>
-          <li>
-            This becomes especially important under stochastic environment dynamics, where rare
-            hazards, noisy transitions, or unmodeled uncertainty can dominate deployment safety.
+            outcomes unacceptable. This becomes especially important under stochastic environment
+            dynamics, where rare hazards, noisy transitions, or unmodeled uncertainty can dominate
+            deployment safety.
           </li>
           <li>
             Classical risk-aware offline RL has addressed lower-tail failures and OOD action risk
@@ -153,6 +151,11 @@
             emerged as a strong way to represent multimodal action distributions in offline data.
           </li>
         </ul>
+
+        <p class="gap-question">
+          These two trends lead to the core question:
+          <span>Can we obtain safety without sacrificing expressiveness?</span>
+        </p>
 
         <div class="gap-box">
           <div class="gap-box__item">
@@ -178,10 +181,6 @@
             </p>
           </div>
         </div>
-
-        <p class="gap-question">
-          Can we obtain safety without sacrificing expressiveness?
-        </p>
 
         <div class="sota-wrap">
           <table class="sota-table" aria-label="Comparison of offline RL paradigms on three desiderata">
