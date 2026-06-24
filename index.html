@@ -156,23 +156,27 @@
           <div class="gap-box__item">
             <h3>
               <span class="gap-box__icon" aria-hidden="true">×</span>
-              <span class="gap-box__title"><span class="gap-word">Gap 1:</span> Risk-awareness can conflict with expressiveness.</span>
+              <span class="gap-box__title"><span class="gap-word">Gap 1:</span> Expressive generative policies empirically work well, but their safety mechanism is underexplained.</span>
             </h3>
             <p>
-              Pessimistic model-free/model-based methods and prior-anchored policy updates can be
-              conservative enough to undervalue low-density but valid modes in multimodal datasets,
-              obstructing useful reweighting or even creating structural OOD leakage.
+              Diffusion and flow policies have become strong offline RL actors because they combine
+              rich multimodal modeling with behavior-regularized policy improvement. Yet the
+              behavior term is often treated as a practical stabilizer, rather than analyzed as an
+              OOD-suppression mechanism. This leaves open why these objectives stay near data
+              support — and how they should be modified when the goal is lower-tail safety rather
+              than mean return.
             </p>
           </div>
           <div class="gap-box__item">
             <h3>
               <span class="gap-box__icon" aria-hidden="true">×</span>
-              <span class="gap-box__title"><span class="gap-word">Gap 2:</span> Expressive generative policies are rarely used for risk-awareness.</span>
+              <span class="gap-box__title"><span class="gap-word">Gap 2:</span> Risk-awareness can conflict with expressiveness.</span>
             </h3>
             <p>
-              Diffusion and flow policies have mostly been treated as risk-neutral offline RL
-              actors, and their role in OOD-sensitive safety learning has remained comparatively
-              underexplored.
+              Value- or model-based pessimism and prior-anchored policy updates can control tail
+              risk and OOD actions, but they may undervalue low-density yet valid modes in
+              multimodal datasets. In anchor-perturbation designs, local residual updates can also
+              create structural OOD leakage when the perturbation region leaves the data support.
             </p>
           </div>
         </div>
