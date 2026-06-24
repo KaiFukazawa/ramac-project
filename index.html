@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=critic-symbol-v3" />
+    <link rel="stylesheet" href="styles.css?v=gap-copy-v1" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -131,14 +131,15 @@
     <main class="page-shell">
 
       <section class="main-section" id="gap">
-        <h2>The Gap</h2>
+        <h2>The Expressiveness-Safety Gap</h2>
         <p class="section-prose">
-          Diffusion and flow policies are the most expressive tools in offline RL — but they
-          optimize mean return only, leaving catastrophic lower-tail outcomes entirely
-          unaddressed. Risk-aware methods like ORAAC and CODAC handle tail risk, but only by
-          constraining the policy class in ways that prevent capturing multimodal action
-          distributions. No prior work achieves risk-awareness, OOD control, and expressiveness
-          simultaneously.
+          Expressive diffusion and flow policies are appealing in offline RL because they can
+          model multimodal, data-supported action distributions, exactly the structure that
+          helps avoid OOD action drift. Yet these policies have mostly been studied as
+          risk-neutral value-improvement tools. Conversely, risk-aware offline RL often controls
+          lower-tail failures with conservative critics or restricted policy updates that can
+          erase the benefits of expressiveness. RAMAC targets this apparent trade-off: keep the
+          expressive generative policy, but train it with distributional lower-tail risk signals.
         </p>
 
         <div class="sota-wrap">

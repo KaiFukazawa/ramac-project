@@ -470,6 +470,10 @@ pre {
   padding: 96px 0;
 }
 
+.page-shell > .main-section:first-child {
+  padding-top: 48px;
+}
+
 .main-section h2 {
   margin: 0 0 24px;
   font-family: "Libre Baskerville", Georgia, serif;
