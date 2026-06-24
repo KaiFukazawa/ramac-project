@@ -493,6 +493,68 @@ pre {
   color: var(--color-text-primary);
 }
 
+.gap-lead-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding-left: 1.2em;
+  max-width: 82ch;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.62;
+  letter-spacing: -0.018em;
+  color: #0F1117;
+}
+
+.gap-lead-list li::marker {
+  color: #0F1117;
+}
+
+.gap-box {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.gap-box__item {
+  padding: 18px 20px;
+  border: 2px solid #0F1117;
+  border-radius: 12px;
+  background: #F4F5F7;
+}
+
+.gap-box__item h3 {
+  margin: 0 0 8px;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: -0.018em;
+  color: #0F1117;
+}
+
+.gap-box__item p {
+  margin: 0;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.58;
+  letter-spacing: -0.018em;
+  color: #0F1117;
+}
+
+.gap-question {
+  margin: 30px 0 0;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: #0F1117;
+}
+
 /* ─── SOTA comparison table ───────────────────────────────── */
 
 .sota-wrap {
@@ -979,6 +1041,26 @@ pre {
 
   .overview-box__body {
     font-size: 17px;
+  }
+
+  .gap-lead-list {
+    font-size: 16px;
+  }
+
+  .gap-box {
+    grid-template-columns: 1fr;
+  }
+
+  .gap-box__item h3 {
+    font-size: 17px;
+  }
+
+  .gap-box__item p {
+    font-size: 15px;
+  }
+
+  .gap-question {
+    font-size: 19px;
   }
 
   .page-shell {

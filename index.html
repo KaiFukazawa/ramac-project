@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=section-title-v1" />
+    <link rel="stylesheet" href="styles.css?v=gap-bullets-v1" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -132,14 +132,49 @@
 
       <section class="main-section" id="gap">
         <h2>The Expressiveness-Safety Gap</h2>
-        <p class="section-prose">
-          Expressive diffusion and flow policies are appealing in offline RL because they can
-          model multimodal, data-supported action distributions, exactly the structure that
-          helps avoid OOD action drift. Yet these policies have mostly been studied as
-          risk-neutral value-improvement tools. Conversely, risk-aware offline RL often controls
-          lower-tail failures with conservative critics or restricted policy updates that can
-          erase the benefits of expressiveness. RAMAC targets this apparent trade-off: keep the
-          expressive generative policy, but train it with distributional lower-tail risk signals.
+        <ul class="gap-lead-list">
+          <li>
+            In safety-critical offline RL, policies should be evaluated not only by mean return,
+            but also by lower-tail risk. For example, a driving policy that reaches the destination
+            faster by speeding may look strong on average, while a rare crash event makes the worst
+            outcomes unacceptable.
+          </li>
+          <li>
+            This becomes especially important under stochastic environment dynamics, where rare
+            hazards, noisy transitions, or unmodeled uncertainty can dominate deployment safety.
+          </li>
+          <li>
+            Classical risk-aware offline RL has addressed lower-tail failures and OOD action risk
+            through mechanisms such as value/model-based pessimism, explicit uncertainty measures,
+            and prior-anchored regularization.
+          </li>
+          <li>
+            In parallel, expressive generative policies such as diffusion and flow models have
+            emerged as a strong way to represent multimodal action distributions in offline data.
+          </li>
+        </ul>
+
+        <div class="gap-box">
+          <div class="gap-box__item">
+            <h3>Gap 1: Risk-awareness appears to fight expressiveness.</h3>
+            <p>
+              Pessimistic model-free/model-based methods and prior-anchored policy updates can be
+              conservative enough to undervalue low-density but valid modes in multimodal datasets,
+              obstructing useful reweighting or even creating structural OOD leakage.
+            </p>
+          </div>
+          <div class="gap-box__item">
+            <h3>Gap 2: Expressive generative policies are rarely used for risk-awareness.</h3>
+            <p>
+              Diffusion and flow policies have mostly been treated as risk-neutral offline RL
+              actors, and their role in OOD-sensitive safety learning has remained comparatively
+              underexplored.
+            </p>
+          </div>
+        </div>
+
+        <p class="gap-question">
+          Can we obtain safety without sacrificing expressiveness?
         </p>
 
         <div class="sota-wrap">
