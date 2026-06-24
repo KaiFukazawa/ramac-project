@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=gap-bullets-v1" />
+    <link rel="stylesheet" href="styles.css?v=gap-style-v1" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -156,7 +156,10 @@
 
         <div class="gap-box">
           <div class="gap-box__item">
-            <h3>Gap 1: Risk-awareness appears to fight expressiveness.</h3>
+            <h3>
+              <span class="gap-box__icon" aria-hidden="true">×</span>
+              Gap 1: Risk-awareness appears to fight expressiveness.
+            </h3>
             <p>
               Pessimistic model-free/model-based methods and prior-anchored policy updates can be
               conservative enough to undervalue low-density but valid modes in multimodal datasets,
@@ -164,7 +167,10 @@
             </p>
           </div>
           <div class="gap-box__item">
-            <h3>Gap 2: Expressive generative policies are rarely used for risk-awareness.</h3>
+            <h3>
+              <span class="gap-box__icon" aria-hidden="true">×</span>
+              Gap 2: Expressive generative policies are rarely used for risk-awareness.
+            </h3>
             <p>
               Diffusion and flow policies have mostly been treated as risk-neutral offline RL
               actors, and their role in OOD-sensitive safety learning has remained comparatively

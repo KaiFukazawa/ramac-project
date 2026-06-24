@@ -499,16 +499,16 @@ pre {
   margin: 0;
   padding-left: 1.2em;
   max-width: 82ch;
-  font-family: "Libre Baskerville", Georgia, serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 18px;
-  font-weight: 700;
-  line-height: 1.62;
-  letter-spacing: -0.018em;
-  color: #0F1117;
+  font-weight: 500;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  color: rgba(15, 17, 23, 0.78);
 }
 
 .gap-lead-list li::marker {
-  color: #0F1117;
+  color: rgba(15, 17, 23, 0.62);
 }
 
 .gap-box {
@@ -519,20 +519,32 @@ pre {
 }
 
 .gap-box__item {
-  padding: 18px 20px;
-  border: 2px solid #0F1117;
+  padding: 12px 20px 18px;
+  border: 2px solid var(--color-risk);
   border-radius: 12px;
-  background: #F4F5F7;
+  background: #FFFFFF;
 }
 
 .gap-box__item h3 {
-  margin: 0 0 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0 0 10px;
   font-family: "Libre Baskerville", Georgia, serif;
   font-size: 18px;
   font-weight: 800;
   line-height: 1.35;
   letter-spacing: -0.018em;
-  color: #0F1117;
+  color: var(--color-risk);
+}
+
+.gap-box__icon {
+  flex: 0 0 auto;
+  font-family: "DM Sans", sans-serif;
+  font-size: 23px;
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--color-risk);
 }
 
 .gap-box__item p {
