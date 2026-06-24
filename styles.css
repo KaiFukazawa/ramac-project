@@ -548,8 +548,12 @@ pre {
   color: #E31B23;
 }
 
+.gap-box__title {
+  color: #E31B23 !important;
+}
+
 .gap-word {
-  color: #E31B23;
+  color: #E31B23 !important;
 }
 
 .gap-box__item p {
