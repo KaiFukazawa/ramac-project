@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=overview-copy-v12" />
+    <link rel="stylesheet" href="styles.css?v=sota-large-v13" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -188,7 +188,7 @@
           <table class="sota-table" aria-label="Comparison of offline RL paradigms on three desiderata">
             <thead>
               <tr>
-                <th scope="col" class="sota-th sota-th--method">Method</th>
+                <th scope="col" class="sota-th sota-th--method">Method Class</th>
                 <th scope="col" class="sota-th sota-th--criteria">Risk-Awareness</th>
                 <th scope="col" class="sota-th sota-th--criteria">OOD Control</th>
                 <th scope="col" class="sota-th sota-th--criteria">Expressiveness</th>
@@ -196,64 +196,24 @@
             </thead>
             <tbody>
               <tr>
-                <td class="sota-td sota-td--method">
-                  Expressive Risk-Neutral
-                  <span class="sota-examples">DiffusionQL, FlowQL</span>
-                </td>
-                <td class="sota-td sota-td--icon">
-                  <svg class="sota-icon sota-icon--cross" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="No">
-                    <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                  </svg>
-                </td>
-                <td class="sota-td sota-td--icon">
-                  <span class="sota-partial" aria-label="Partial">✗&thinsp;/&thinsp;✓</span>
-                </td>
-                <td class="sota-td sota-td--icon">
-                  <svg class="sota-icon sota-icon--check" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="Yes">
-                    <path d="M4 10l4.5 4.5L16 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </td>
+                <td class="sota-td sota-td--method">Expressive Generative Policies</td>
+                <td class="sota-td sota-td--icon"><span class="sota-symbol sota-symbol--cross" aria-label="No">✗</span></td>
+                <td class="sota-td sota-td--icon"><span class="sota-symbol sota-symbol--unknown" aria-label="Unknown">?</span></td>
+                <td class="sota-td sota-td--icon"><span class="sota-symbol sota-symbol--check" aria-label="Yes">✓</span></td>
               </tr>
               <tr>
-                <td class="sota-td sota-td--method">
-                  Risk-Aware Restricted
-                  <span class="sota-examples">ORAAC, CODAC</span>
-                </td>
-                <td class="sota-td sota-td--icon">
-                  <svg class="sota-icon sota-icon--check" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="Yes">
-                    <path d="M4 10l4.5 4.5L16 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </td>
-                <td class="sota-td sota-td--icon">
-                  <svg class="sota-icon sota-icon--check" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="Yes">
-                    <path d="M4 10l4.5 4.5L16 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </td>
-                <td class="sota-td sota-td--icon">
-                  <svg class="sota-icon sota-icon--cross" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="No">
-                    <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                  </svg>
-                </td>
+                <td class="sota-td sota-td--method">Risk-Aware Offline RL</td>
+                <td class="sota-td sota-td--icon"><span class="sota-symbol sota-symbol--check" aria-label="Yes">✓</span></td>
+                <td class="sota-td sota-td--icon"><span class="sota-symbol sota-symbol--check" aria-label="Yes">✓</span></td>
+                <td class="sota-td sota-td--icon"><span class="sota-symbol sota-symbol--cross" aria-label="No">✗</span></td>
               </tr>
               <tr class="sota-row-ramac">
                 <td class="sota-td sota-td--method sota-td--ramac">
-                  RAMAC <span class="sota-ours">(Ours)</span>
+                  RAMAC (Ours)
                 </td>
-                <td class="sota-td sota-td--icon">
-                  <svg class="sota-icon sota-icon--check" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="Yes">
-                    <path d="M4 10l4.5 4.5L16 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </td>
-                <td class="sota-td sota-td--icon">
-                  <svg class="sota-icon sota-icon--check" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="Yes">
-                    <path d="M4 10l4.5 4.5L16 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </td>
-                <td class="sota-td sota-td--icon">
-                  <svg class="sota-icon sota-icon--check" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-label="Yes">
-                    <path d="M4 10l4.5 4.5L16 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </td>
+                <td class="sota-td sota-td--icon"><span class="sota-symbol sota-symbol--check" aria-label="Yes">✓</span></td>
+                <td class="sota-td sota-td--icon"><span class="sota-symbol sota-symbol--check" aria-label="Yes">✓</span></td>
+                <td class="sota-td sota-td--icon"><span class="sota-symbol sota-symbol--check" aria-label="Yes">✓</span></td>
               </tr>
             </tbody>
           </table>

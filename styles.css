@@ -583,7 +583,7 @@ pre {
 /* ─── SOTA comparison table ───────────────────────────────── */
 
 .sota-wrap {
-  max-width: 780px;
+  max-width: 1040px;
   margin: 40px auto 0;
   overflow-x: auto;
 }
@@ -592,12 +592,12 @@ pre {
   width: 100%;
   border-collapse: collapse;
   font-family: "DM Sans", sans-serif;
-  font-size: 15px;
+  font-size: 28px;
 }
 
 .sota-th {
-  padding: 14px 20px;
-  font-weight: 600;
+  padding: 24px 30px;
+  font-weight: 700;
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -610,12 +610,12 @@ pre {
 }
 
 .sota-td {
-  padding: 14px 20px;
+  padding: 24px 30px;
   border-bottom: 1px solid var(--color-border);
 }
 
 .sota-td--method {
-  font-weight: 500;
+  font-weight: 600;
   text-align: left;
 }
 
@@ -650,6 +650,25 @@ pre {
   color: var(--color-text-secondary);
 }
 
+.sota-symbol {
+  display: inline-block;
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.sota-symbol--check {
+  color: var(--color-safe);
+}
+
+.sota-symbol--cross {
+  color: var(--color-risk);
+}
+
+.sota-symbol--unknown {
+  color: var(--color-text-secondary);
+}
+
 .sota-row-ramac {
   background: var(--color-accent-light);
   font-weight: 600;
@@ -667,7 +686,7 @@ pre {
 .sota-caption {
   margin: 16px 0 0;
   font-family: "DM Sans", sans-serif;
-  font-size: 13px;
+  font-size: 18px;
   text-align: center;
   color: var(--color-text-secondary);
 }
