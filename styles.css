@@ -484,6 +484,10 @@ pre {
   color: #177EAD;
 }
 
+.experiments-section {
+  padding-top: 44px;
+}
+
 .section-prose {
   margin: 0;
   max-width: 72ch;
@@ -982,6 +986,11 @@ pre {
   letter-spacing: -0.01em;
 }
 
+.subsection-heading--center {
+  margin-top: 18px;
+  text-align: center;
+}
+
 /* ─── Table shared utilities ──────────────────────────────── */
 
 .table-caption {
@@ -1198,6 +1207,10 @@ pre {
 
   .main-section {
     padding: 64px 0;
+  }
+
+  .experiments-section {
+    padding-top: 42px;
   }
 
   .hero {

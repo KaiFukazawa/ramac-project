@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=green-critic-note-v60" />
+    <link rel="stylesheet" href="styles.css?v=experiments-tight-v61" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -309,27 +309,18 @@
       </section>
       <hr class="section-rule">
 
-      <section class="main-section" id="experiments">
+      <section class="main-section experiments-section" id="experiments">
         <h2 class="reveal">Experiments</h2>
-        <p class="section-prose reveal">
-          We evaluate RADAC on <strong>Stochastic-D4RL</strong> — six standard D4RL locomotion
-          datasets augmented with rare heavy-tailed penalties across HalfCheetah, Hopper, and
-          Walker2d. Results are averaged over 5 seeds and 50 evaluation rollouts; we report both
-          mean return and episodic CVaR<sub>0.1</sub>.
-        </p>
 
-        <h3 class="subsection-heading reveal">2-D Risky Bandit</h3>
-        <p class="section-prose reveal">
-          A 2-D contextual bandit isolates exactly what makes risk-aware offline RL hard: the
-          ground truth has a <strong>safe center</strong> mode (moderate reward, no catastrophic
-          tail) and a <strong>risky ring</strong> (higher mean with rare large penalties). This
-          controlled geometry makes multimodality and lower-tail hazard visible — and reveals where
-          each method's policy mass actually concentrates.
-        </p>
+        <h3 class="subsection-heading subsection-heading--center reveal">2-D Risky Bandit</h3>
 
         <div class="figure-placeholder reveal" aria-label="Eight-panel grid showing policy distributions for ground truth and seven methods on the 2-D risky bandit. RADAC concentrates near the safe center; ORAAC variants leak into inter-mode gaps; risk-neutral baselines chase the risky ring.">
           <span>Figure pending — see paper</span>
         </div>
+        <p class="table-caption reveal">
+          <em>A 2-D contextual bandit exposes the core challenge: preserving multimodal behavior
+          while moving probability away from rare lower-tail hazards.</em>
+        </p>
         <p class="table-caption reveal">
           <em>Top: Ground truth consists of a safe center mode (yellow-green) and a risky ring
           where high-reward samples (yellow) are interspersed with catastrophic penalties (purple).
