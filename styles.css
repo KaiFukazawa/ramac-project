@@ -1140,11 +1140,14 @@ pre {
 }
 
 .result-image-wrap--d4rl {
-  max-width: 980px;
+  width: min(calc(100vw - 2rem), 1120px);
+  max-width: none;
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
 .result-image--d4rl {
-  width: 108%;
+  width: 100%;
   max-width: none;
   min-width: 980px;
 }
