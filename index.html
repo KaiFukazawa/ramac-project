@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=gif-final-frame-v72" />
+    <link rel="stylesheet" href="styles.css?v=gif-pause-frame-v73" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -322,7 +322,7 @@
         <div class="risky-gif-grid reveal" aria-label="2-D risky bandit policy evolution GIFs for DiffusionQL, ORAAC, and RADAC">
           <figure class="risky-gif-card">
             <div class="risky-gif-media">
-              <img src="assets/dql_poster.png" data-gif-src="assets/dql.gif" data-final-src="assets/dql_final.png" alt="Diffusion Q-learning policy evolution on the 2-D risky bandit" loading="lazy">
+              <img src="assets/dql_poster.png" data-gif-src="assets/dql.gif" data-final-src="assets/dql_final.png" data-frame-prefix="assets/gif_frames/dql_frame_" alt="Diffusion Q-learning policy evolution on the 2-D risky bandit" loading="lazy">
               <button class="gif-start-btn" type="button" aria-label="Start DiffusionQL animation">Start</button>
             </div>
             <div class="gif-epoch" aria-live="polite">Epoch 0</div>
@@ -330,7 +330,7 @@
           </figure>
           <figure class="risky-gif-card">
             <div class="risky-gif-media">
-              <img src="assets/oraac_poster.png" data-gif-src="assets/oraac.gif" data-final-src="assets/oraac_final.png" alt="ORAAC policy evolution on the 2-D risky bandit" loading="lazy">
+              <img src="assets/oraac_poster.png" data-gif-src="assets/oraac.gif" data-final-src="assets/oraac_final.png" data-frame-prefix="assets/gif_frames/oraac_frame_" alt="ORAAC policy evolution on the 2-D risky bandit" loading="lazy">
               <button class="gif-start-btn" type="button" aria-label="Start ORAAC animation">Start</button>
             </div>
             <div class="gif-epoch" aria-live="polite">Epoch 0</div>
@@ -338,7 +338,7 @@
           </figure>
           <figure class="risky-gif-card">
             <div class="risky-gif-media">
-              <img src="assets/radac_poster.png" data-gif-src="assets/radac.gif" data-final-src="assets/radac_final.png" alt="RADAC policy evolution on the 2-D risky bandit" loading="lazy">
+              <img src="assets/radac_poster.png" data-gif-src="assets/radac.gif" data-final-src="assets/radac_final.png" data-frame-prefix="assets/gif_frames/radac_frame_" alt="RADAC policy evolution on the 2-D risky bandit" loading="lazy">
               <button class="gif-start-btn" type="button" aria-label="Start RADAC animation">Start</button>
             </div>
             <div class="gif-epoch" aria-live="polite">Epoch 0</div>
@@ -625,11 +625,27 @@
       const gifEpochStep = 50;
       const gifEpochMax = 1000;
       const gifFrameMs = 200;
+      const gifFrameCount = gifEpochMax / gifEpochStep + 1;
 
       function setGifEpoch(media, epoch) {
         const card = media.closest('.risky-gif-card');
         const epochEl = card && card.querySelector('.gif-epoch');
+        const frameIndex = Math.min(Math.floor(epoch / gifEpochStep) + 1, gifFrameCount);
+        media.dataset.currentFrame = String(frameIndex);
         if (epochEl) epochEl.textContent = `Epoch ${epoch}`;
+      }
+
+      function getCurrentGifFrame(media) {
+        const startedAt = Number(media.dataset.playStartedAt);
+        if (!Number.isFinite(startedAt)) return Number(media.dataset.currentFrame || 1);
+        const elapsedMs = Math.max(performance.now() - startedAt, 0);
+        return Math.min(Math.floor(elapsedMs / gifFrameMs) + 1, gifFrameCount);
+      }
+
+      function getGifFrameSrc(img, frameIndex) {
+        const prefix = img.dataset.framePrefix;
+        if (!prefix) return '';
+        return `${prefix}${String(frameIndex).padStart(2, '0')}.png`;
       }
 
       function clearGifEpochTimer(media) {
@@ -642,22 +658,42 @@
         }
       }
 
+      function setButtonToStart(btn) {
+        btn.textContent = 'Start';
+        btn.setAttribute('aria-label', btn.getAttribute('aria-label').replace('Stop', 'Start'));
+      }
+
       function finishGifPlayback(media) {
         const img = media.querySelector('img');
         const btn = media.querySelector('.gif-start-btn');
         const finalSrc = img.dataset.finalSrc;
         clearGifEpochTimer(media);
+        delete media.dataset.playStartedAt;
         setGifEpoch(media, gifEpochMax);
         if (finalSrc) img.src = finalSrc;
         media.classList.remove('is-playing');
-        btn.textContent = 'Start';
-        btn.setAttribute('aria-label', btn.getAttribute('aria-label').replace('Stop', 'Start'));
+        setButtonToStart(btn);
+      }
+
+      function pauseGifMedia(media) {
+        const img = media.querySelector('img');
+        const btn = media.querySelector('.gif-start-btn');
+        const frameIndex = getCurrentGifFrame(media);
+        const epoch = Math.min((frameIndex - 1) * gifEpochStep, gifEpochMax);
+        const frameSrc = getGifFrameSrc(img, frameIndex);
+        clearGifEpochTimer(media);
+        delete media.dataset.playStartedAt;
+        setGifEpoch(media, epoch);
+        if (frameSrc) img.src = frameSrc;
+        media.classList.remove('is-playing');
+        setButtonToStart(btn);
       }
 
       function startGifEpochTimer(media) {
         let epoch = 0;
         clearGifEpochTimer(media);
         setGifEpoch(media, epoch);
+        media.dataset.playStartedAt = String(performance.now());
         media.dataset.epochTimer = window.setInterval(() => {
           epoch = Math.min(epoch + gifEpochStep, gifEpochMax);
           setGifEpoch(media, epoch);
@@ -672,12 +708,12 @@
         const btn = media.querySelector('.gif-start-btn');
         const posterSrc = img.dataset.posterSrc || img.src;
         clearGifEpochTimer(media);
+        delete media.dataset.playStartedAt;
         img.dataset.posterSrc = posterSrc;
         img.src = posterSrc;
         setGifEpoch(media, 0);
         media.classList.remove('is-playing');
-        btn.textContent = 'Start';
-        btn.setAttribute('aria-label', btn.getAttribute('aria-label').replace('Stop', 'Start'));
+        setButtonToStart(btn);
       }
 
       document.querySelectorAll('.gif-start-btn').forEach(btn => {
@@ -690,9 +726,10 @@
           img.dataset.posterSrc = posterSrc;
 
           if (media.classList.contains('is-playing')) {
-            resetGifMedia(media);
+            pauseGifMedia(media);
           } else {
             clearGifEpochTimer(media);
+            delete media.dataset.playStartedAt;
             setGifEpoch(media, 0);
             const loadToken = String(Date.now());
             media.dataset.epochLoadToken = loadToken;
