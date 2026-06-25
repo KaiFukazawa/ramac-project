@@ -726,7 +726,7 @@ pre {
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
-  margin: 28px auto 0;
+  margin: 20px auto 0;
 }
 
 .method-card {

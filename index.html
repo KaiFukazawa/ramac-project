@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=method-heading-top-v29" />
+    <link rel="stylesheet" href="styles.css?v=objective-card-v30" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -234,6 +234,15 @@
             risk signals directly through the diffusion/flow actor.
           </li>
           <li>
+            The distributional critic \(Z_\phi(s,a;\tau)\) estimates return quantiles, so CVaR can
+            be computed from the lower tail rather than from a scalar mean-value estimate.
+          </li>
+          <li>
+            The expressive actor samples actions through a differentiable diffusion/flow path
+            \(a=\psi_\theta(s,z)\), allowing the same generated action to receive lower-tail
+            guidance from the critic.
+          </li>
+          <li>
             This turns risk-aware offline RL into a single-policy training problem: the actor
             remains behavior-regularized to stay near data support, while the critic's CVaR signal
             reweights the same generative policy away from catastrophic modes.
@@ -242,72 +251,7 @@
 
         <div class="method-grid reveal" aria-label="RAMAC methodology components">
           <article class="method-card">
-            <h3>1. Distributional Critic</h3>
-            <p>
-              RAMAC replaces a mean-value critic with an IQN-style distributional critic
-              \(Z_\phi(s,a;\tau)\) that fits the conditional return law through a quantile TD
-              residual:
-            </p>
-            <div class="method-card__eq">
-              $$\begin{aligned}
-              \delta_\phi
-              &:= r+\gamma Z_{\bar\phi}(s',a';\tau')-Z_\phi(s,a;\tau).
-              \end{aligned}$$
-            </div>
-            <p>
-              The critic is trained by minimizing the quantile-Huber Bellman residual over dataset
-              transitions, actor-sampled next actions, and quantile levels:
-            </p>
-            <div class="method-card__eq">
-              $$\begin{aligned}
-              \mathcal{L}_{\mathrm{Critic}}(\phi)
-              &= \mathbb{E}_{
-              \substack{
-              (s,a,r,s')\sim\mathcal{D},\\
-              a'\sim\pi_\theta(\cdot|s'),\ \tau,\tau'\sim\mathcal{U}(0,1)
-              }}
-              \Big[
-              \mathcal{L}_\kappa\!\big(\delta_\phi;\tau\big)
-              \Big].
-              \end{aligned}$$
-            </div>
-            <p>
-              This gives direct access to return quantiles, so lower-tail objectives can be computed
-              from the critic rather than approximated by a scalar mean value.
-            </p>
-          </article>
-
-          <article class="method-card">
-            <h3>2. Risk-Aware Generative Actor</h3>
-            <p>
-              Given a state and latent noise, the expressive actor generates actions through a
-              differentiable diffusion/flow path:
-            </p>
-            <div class="method-card__eq">
-              $$\begin{aligned}
-              a &= \psi_\theta(s,z), \qquad z \sim \mathcal{N}(0,I).
-              \end{aligned}$$
-            </div>
-            <p>
-              The same generated action is evaluated by the distributional critic, whose lower
-              quantiles define the CVaR signal:
-            </p>
-            <div class="method-card__eq">
-              $$\begin{aligned}
-              \mathrm{CVaR}_\alpha\!\bigl(Z_\phi(s,a)\bigr)
-              &= \frac{1}{\alpha}\int_0^\alpha Z_\phi(s,a;\tau)\,d\tau\\
-              &\approx \frac{1}{K}\sum_{k=1}^{K} Z_\phi(s,a;\tau_k),
-              \quad \tau_k\sim\mathcal{U}(0,\alpha).
-              \end{aligned}$$
-            </div>
-            <p>
-              Because this path is differentiable, the critic's lower-tail risk signal, instantiated
-              by CVaR, can shape the same actor used for multimodal behavior modeling.
-            </p>
-          </article>
-
-          <article class="method-card">
-            <h3>3. Behavior-Regularized Objective</h3>
+            <h3>Behavior-Regularized Objective</h3>
             <p>
               RAMAC combines the actor's native behavior-cloning term with a risk loss that
               maximizes the critic's lower-tail return estimate:
