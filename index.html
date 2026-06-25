@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=gif-epoch-v70" />
+    <link rel="stylesheet" href="styles.css?v=gif-epoch-sync-v71" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -630,6 +630,9 @@
           clearInterval(Number(media.dataset.epochTimer));
           delete media.dataset.epochTimer;
         }
+        if (media.dataset.epochLoadToken) {
+          delete media.dataset.epochLoadToken;
+        }
       }
 
       function finishGifPlayback(media) {
@@ -679,11 +682,19 @@
           if (media.classList.contains('is-playing')) {
             resetGifMedia(media);
           } else {
-            img.src = `${gifSrc}?play=${Date.now()}`;
+            clearGifEpochTimer(media);
+            setGifEpoch(media, 0);
+            const loadToken = String(Date.now());
+            media.dataset.epochLoadToken = loadToken;
+            img.addEventListener('load', () => {
+              if (media.dataset.epochLoadToken === loadToken && media.classList.contains('is-playing')) {
+                startGifEpochTimer(media);
+              }
+            }, { once: true });
+            img.src = `${gifSrc}?play=${loadToken}`;
             media.classList.add('is-playing');
             btn.textContent = '||';
             btn.setAttribute('aria-label', btn.getAttribute('aria-label').replace('Start', 'Stop'));
-            startGifEpochTimer(media);
           }
         });
       });
