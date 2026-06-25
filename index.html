@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=br-matters-blue-v57" />
+    <link rel="stylesheet" href="styles.css?v=br-key-takeaway-v58" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -281,10 +281,15 @@
             D_{\mathrm{KL}}\!\left(\beta(\cdot\mid s)\,\Vert\,\pi_\theta(\cdot\mid s)\right)}$$
           </div>
 
-          <p class="br-takeaway">
-            These bounds formally link risk-awareness and OOD control: behavior regularization
-            suppresses OOD actions while stabilizing CVaR under distribution shift.
-          </p>
+          <div class="br-key-takeaway">
+            <span>Key takeaway:</span>
+            This analysis is not specific to RAMAC. It provides a mathematical explanation for why
+            expressive generative policies can work well in offline RL: direct behavior
+            regularization keeps rich policies near data support, while still allowing value or risk
+            signals to reweight supported modes. Broad empirical evidence for this behavior
+            regularization principle is provided by
+            <a href="https://proceedings.neurips.cc/paper_files/paper/2023/hash/26cce1e512793f2072fd27c391e04652-Abstract-Conference.html" target="_blank" rel="noopener">this research</a>.
+          </div>
         </div>
 
         <div class="intuition-stack reveal" aria-label="Additional intuition behind RAMAC">

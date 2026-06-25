@@ -819,14 +819,34 @@ pre {
   font-size: 0.92rem;
 }
 
-.br-takeaway {
-  margin: 12px 0 0;
+.br-key-takeaway {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border-left: 5px solid #177EAD;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.78);
   font-family: "DM Sans", sans-serif;
   font-size: 15px;
-  font-weight: 600;
-  line-height: 1.55;
+  font-weight: 500;
+  line-height: 1.58;
   letter-spacing: -0.01em;
   color: #0F1117;
+}
+
+.br-key-takeaway span {
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-weight: 800;
+  color: #0F1117;
+}
+
+.br-key-takeaway a {
+  color: #177EAD;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.br-key-takeaway a:hover {
+  text-decoration: underline;
 }
 
 /* ─── Intuition cards ─────────────────────────────────────── */
@@ -1260,7 +1280,7 @@ pre {
     font-size: 0.84rem;
   }
 
-  .br-takeaway {
+  .br-key-takeaway {
     font-size: 14px;
   }
 
