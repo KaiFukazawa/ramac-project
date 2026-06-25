@@ -492,6 +492,14 @@ pre {
   margin-bottom: 8px;
 }
 
+.citation-section {
+  padding-top: 44px;
+}
+
+.citation-section h2 {
+  margin-bottom: 8px;
+}
+
 .section-prose {
   margin: 0;
   max-width: 72ch;
@@ -1295,7 +1303,7 @@ pre {
 .bibtex-wrap {
   position: relative;
   max-width: 720px;
-  margin: 24px auto 0;
+  margin: 16px auto 0;
 }
 
 .bibtex-block {
@@ -1305,9 +1313,11 @@ pre {
   border: 1px solid var(--color-border);
   border-radius: 8px;
   overflow-x: auto;
-  font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
-  font-size: 14px;
-  line-height: 1.65;
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.58;
+  letter-spacing: -0.01em;
   color: var(--color-text-primary);
 }
 
@@ -1405,7 +1415,15 @@ pre {
     padding-top: 42px;
   }
 
+  .citation-section {
+    padding-top: 42px;
+  }
+
   .experiments-section h2 {
+    margin-bottom: 6px;
+  }
+
+  .citation-section h2 {
     margin-bottom: 6px;
   }
 
