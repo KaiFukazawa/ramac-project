@@ -380,46 +380,27 @@
           </li>
         </ul>
 
-        <h3 class="subsection-heading reveal">OOD Action Rate</h3>
-        <p class="section-prose reveal">
-          RADAC achieves consistently lower out-of-distribution action rates than ORAAC across all
-          tasks, validating that BC regularization on the deployed policy directly suppresses OOD
-          visitation.
-        </p>
+        <h3 class="subsection-heading subsection-heading--center reveal">OOD Action Rate</h3>
 
-        <div class="table2-wrap reveal">
-          <table class="table2" aria-label="OOD action rate comparison between RADAC and ORAAC">
-            <thead>
-              <tr>
-                <th class="rt-th rt-th--left">Task</th>
-                <th class="rt-th rt-th--num rt-th--radac">RADAC (ours)</th>
-                <th class="rt-th rt-th--num">ORAAC</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="rt-td rt-td--dataset">HalfCheetah</td>
-                <td class="rt-td rt-td--num">2.04 ± 0.80</td>
-                <td class="rt-td rt-td--num">6.15 ± 1.5</td>
-              </tr>
-              <tr>
-                <td class="rt-td rt-td--dataset">Walker2d</td>
-                <td class="rt-td rt-td--num">0.75 ± 0.54</td>
-                <td class="rt-td rt-td--num">10.84 ± 1.98</td>
-              </tr>
-              <tr>
-                <td class="rt-td rt-td--dataset">Hopper</td>
-                <td class="rt-td rt-td--num">0.77 ± 0.56</td>
-                <td class="rt-td rt-td--num">2.68 ± 1.01</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="table-caption reveal">
-          <em>Table 2. OOD action rate (% ± s.e.) on Medium-Expert (κ=3). RADAC is consistently
-          lower, confirming that BC regularization on the deployed policy suppresses OOD
-          visitation.</em>
-        </p>
+        <figure class="result-image-wrap result-image-wrap--ood reveal">
+          <img
+            class="result-image result-image--ood"
+            src="assets/ood_results.png"
+            alt="OOD action rate comparison between RADAC and ORAAC on Medium-Expert tasks"
+            loading="lazy"
+          >
+        </figure>
+
+        <ul class="experiment-notes experiment-notes--table reveal">
+          <li>
+            We measure state-conditioned OOD action rates on Medium-Expert tasks using a
+            nearest-neighbor detector with κ=3.
+          </li>
+          <li>
+            RADAC is consistently lower than ORAAC, supporting the role of behavior regularization
+            on the deployed policy in suppressing OOD visitation.
+          </li>
+        </ul>
       </section>
       <hr class="section-rule">
 

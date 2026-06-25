@@ -1135,6 +1135,14 @@ pre {
   min-width: 820px;
 }
 
+.result-image-wrap--ood {
+  max-width: 620px;
+}
+
+.result-image--ood {
+  min-width: 420px;
+}
+
 /* ─── Scroll-reveal ───────────────────────────────────────── */
 
 .reveal {
