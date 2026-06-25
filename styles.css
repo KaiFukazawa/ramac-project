@@ -1128,11 +1128,17 @@ pre {
   display: block;
   width: 100%;
   height: auto;
-  margin: 0 auto;
+  margin: 0;
+}
+
+.result-image-wrap--d4rl {
+  max-width: 980px;
 }
 
 .result-image--d4rl {
-  min-width: 820px;
+  width: 108%;
+  max-width: none;
+  min-width: 980px;
 }
 
 .result-image-wrap--ood {
