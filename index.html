@@ -234,15 +234,6 @@
             risk signals directly through the diffusion/flow actor.
           </li>
           <li>
-            The distributional critic \(Z_\phi(s,a;\tau)\) estimates return quantiles, so CVaR can
-            be computed from the lower tail rather than from a scalar mean-value estimate.
-          </li>
-          <li>
-            The expressive actor samples actions through a differentiable diffusion/flow path
-            \(a=\psi_\theta(s,z)\), allowing the same generated action to receive lower-tail
-            guidance from the critic.
-          </li>
-          <li>
             This turns risk-aware offline RL into a single-policy training problem: the actor
             remains behavior-regularized to stay near data support, while the critic's CVaR signal
             reweights the same generative policy away from catastrophic modes.
