@@ -860,6 +860,11 @@ pre {
   font-weight: 400;
 }
 
+.br-key-takeaway .takeaway-plain strong {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 800;
+}
+
 .br-key-takeaway a {
   color: #177EAD;
   font-weight: 800;
