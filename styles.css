@@ -966,8 +966,50 @@ pre {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
   max-width: 980px;
-  margin: 36px auto 0;
+  margin: 24px auto 0;
   align-items: start;
+}
+
+.toy-full-details {
+  max-width: 980px;
+  margin: 10px auto 0;
+  text-align: center;
+}
+
+.toy-full-details summary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #177EAD;
+  list-style: none;
+}
+
+.toy-full-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.toy-full-details summary::after {
+  content: " +";
+  font-weight: 900;
+}
+
+.toy-full-details[open] summary::after {
+  content: " -";
+}
+
+.toy-full-details img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 16px auto 0;
+  border: 1px solid rgba(15, 17, 23, 0.14);
+  border-radius: 12px;
+  background: #FFFFFF;
 }
 
 .risky-gif-card {
@@ -1023,7 +1065,7 @@ pre {
 }
 
 .subsection-heading--center {
-  margin-top: 18px;
+  margin-top: 4px;
   text-align: center;
 }
 
@@ -1252,7 +1294,7 @@ pre {
   .risky-gif-grid {
     grid-template-columns: 1fr;
     gap: 16px;
-    margin-top: 28px;
+    margin-top: 22px;
   }
 
   .hero {
