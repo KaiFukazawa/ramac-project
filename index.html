@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=toy-full-collapse-v65" />
+    <link rel="stylesheet" href="styles.css?v=gif-start-controls-v66" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -321,15 +321,24 @@
 
         <div class="risky-gif-grid reveal" aria-label="2-D risky bandit policy evolution GIFs for DQL, ORAAC, and RADAC">
           <figure class="risky-gif-card">
-            <img src="assets/dql.gif" alt="Diffusion Q-learning policy evolution on the 2-D risky bandit" loading="lazy">
+            <div class="risky-gif-media">
+              <img src="assets/dql_poster.png" data-gif-src="assets/dql.gif" alt="Diffusion Q-learning policy evolution on the 2-D risky bandit" loading="lazy">
+              <button class="gif-start-btn" type="button" aria-label="Start DQL animation">Start</button>
+            </div>
             <figcaption>DQL</figcaption>
           </figure>
           <figure class="risky-gif-card">
-            <img src="assets/oraac.gif" alt="ORAAC policy evolution on the 2-D risky bandit" loading="lazy">
+            <div class="risky-gif-media">
+              <img src="assets/oraac_poster.png" data-gif-src="assets/oraac.gif" alt="ORAAC policy evolution on the 2-D risky bandit" loading="lazy">
+              <button class="gif-start-btn" type="button" aria-label="Start ORAAC animation">Start</button>
+            </div>
             <figcaption>ORAAC</figcaption>
           </figure>
           <figure class="risky-gif-card">
-            <img src="assets/radac.gif" alt="RADAC policy evolution on the 2-D risky bandit" loading="lazy">
+            <div class="risky-gif-media">
+              <img src="assets/radac_poster.png" data-gif-src="assets/radac.gif" alt="RADAC policy evolution on the 2-D risky bandit" loading="lazy">
+              <button class="gif-start-btn" type="button" aria-label="Start RADAC animation">Start</button>
+            </div>
             <figcaption>RADAC</figcaption>
           </figure>
         </div>
@@ -599,6 +608,19 @@
         { threshold: 0.15 }
       );
       revealEls.forEach(el => revealObserver.observe(el));
+
+      // Start GIFs on demand by swapping poster frames for animated GIFs.
+      document.querySelectorAll('.gif-start-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const media = btn.closest('.risky-gif-media');
+          const img = media.querySelector('img');
+          const gifSrc = img.dataset.gifSrc;
+          if (!gifSrc) return;
+          img.src = `${gifSrc}?play=${Date.now()}`;
+          media.classList.add('is-playing');
+          btn.disabled = true;
+        });
+      });
 
       // BibTeX copy button
       function copyBibtex(btn) {

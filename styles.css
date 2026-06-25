@@ -488,6 +488,10 @@ pre {
   padding-top: 44px;
 }
 
+.experiments-section h2 {
+  margin-bottom: 8px;
+}
+
 .section-prose {
   margin: 0;
   max-width: 72ch;
@@ -973,7 +977,7 @@ pre {
 .toy-full-details {
   max-width: 980px;
   margin: 10px auto 0;
-  text-align: center;
+  text-align: left;
 }
 
 .toy-full-details summary {
@@ -982,7 +986,7 @@ pre {
   justify-content: center;
   cursor: pointer;
   font-family: "DM Sans", sans-serif;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 800;
   letter-spacing: -0.01em;
   color: #177EAD;
@@ -1020,6 +1024,12 @@ pre {
   background: #FFFFFF;
 }
 
+.risky-gif-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
 .risky-gif-card img {
   display: block;
   width: 100%;
@@ -1027,6 +1037,35 @@ pre {
   height: auto;
   object-fit: fill;
   border-radius: 8px;
+}
+
+.gif-start-btn {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid #0F1117;
+  border-radius: 999px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #0F1117;
+  cursor: pointer;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  box-shadow: 0 10px 22px rgba(15, 17, 23, 0.16);
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.gif-start-btn:hover {
+  transform: translate(-50%, -50%) scale(1.04);
+  background: #FFFFFF;
+}
+
+.risky-gif-media.is-playing .gif-start-btn {
+  display: none;
 }
 
 .risky-gif-card figcaption {
@@ -1065,7 +1104,7 @@ pre {
 }
 
 .subsection-heading--center {
-  margin-top: 4px;
+  margin-top: 0;
   text-align: center;
 }
 
@@ -1289,6 +1328,14 @@ pre {
 
   .experiments-section {
     padding-top: 42px;
+  }
+
+  .experiments-section h2 {
+    margin-bottom: 6px;
+  }
+
+  .toy-full-details summary {
+    font-size: 17px;
   }
 
   .risky-gif-grid {
