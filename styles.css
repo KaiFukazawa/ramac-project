@@ -731,8 +731,8 @@ pre {
 
 .method-card {
   display: block;
-  background: #ffffff;
-  border: 1px solid rgba(29, 111, 164, 0.16);
+  background: #EDF7FC;
+  border: 2px solid rgba(29, 111, 164, 0.28);
   border-radius: 18px;
   padding: 8px 14px 18px;
   box-shadow: 0 14px 34px rgba(20, 54, 94, 0.08);
