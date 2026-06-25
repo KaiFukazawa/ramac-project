@@ -860,24 +860,27 @@ pre {
 
 .intuition-card {
   display: block;
-  background: #F4F5F7;
-  border: 2px solid #0F1117;
-  border-radius: 12px;
-  padding: 12px 18px 14px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 12px 14px;
+  border: none;
+  border-left: 5px solid #E5484D;
+  border-radius: 10px;
+  background: #FFF1F1;
   box-shadow: none;
 }
 
 .intuition-card--note {
-  background: #F4F5F7;
+  background: #FFF1F1;
 }
 
 .main-section .intuition-card h3 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin: 0 0 6px;
+  margin: 0 0 4px;
   font-family: "Libre Baskerville", Georgia, serif;
-  font-size: 19px;
+  font-size: 15px;
   font-weight: 800;
   letter-spacing: -0.018em;
   color: #0F1117 !important;
@@ -887,9 +890,9 @@ pre {
 .intuition-card p {
   margin: 0;
   font-family: "DM Sans", sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
-  line-height: 1.55;
+  line-height: 1.58;
   letter-spacing: -0.01em;
   color: #0F1117;
 }
@@ -1285,15 +1288,15 @@ pre {
   }
 
   .intuition-card {
-    padding: 11px 14px 13px;
+    padding: 11px 13px;
   }
 
   .main-section .intuition-card h3 {
-    font-size: 17px;
+    font-size: 14px;
   }
 
   .intuition-card p {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .gap-lead-list {
