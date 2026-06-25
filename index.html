@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=solution-idea-v21" />
+    <link rel="stylesheet" href="styles.css?v=solution-cards-v22" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -238,7 +238,6 @@
 
         <div class="method-grid reveal" aria-label="RAMAC methodology components">
           <article class="method-card">
-            <p class="method-card__kicker">Expose the lower tail</p>
             <h3>Distributional Critic</h3>
             <p>
               RAMAC replaces a mean-value critic with an IQN-style distributional critic
@@ -262,8 +261,7 @@
           </article>
 
           <article class="method-card">
-            <p class="method-card__kicker">Receive risk gradients through the generative path</p>
-            <h3>Expressive Generative Actor</h3>
+            <h3>Risk-Aware Generative Actor</h3>
             <p>
               The policy samples actions through a differentiable diffusion/flow path, so the
               critic's lower-tail signal can shape the same expressive actor used for multimodal
@@ -281,8 +279,7 @@
           </article>
 
           <article class="method-card">
-            <p class="method-card__kicker">Reweight modes while preserving behavior fidelity</p>
-            <h3>Single Composite Objective</h3>
+            <h3>Behavior-Regularized Objective</h3>
             <p>
               A behavior-cloning term keeps the actor close to offline data, while the risk term
               shifts probability away from low-CVaR outcomes.

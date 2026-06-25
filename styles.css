@@ -723,53 +723,48 @@ pre {
   display: grid;
   grid-template-columns: minmax(0, 0.82fr) minmax(360px, 1.18fr);
   column-gap: 24px;
-  align-items: start;
-  background: #ffffff;
-  border: 1px solid rgba(29, 111, 164, 0.16);
-  border-radius: 18px;
-  padding: 22px 24px 22px;
-  box-shadow: 0 14px 34px rgba(20, 54, 94, 0.08);
-}
-
-.method-card__kicker {
-  margin: 0 0 8px;
-  font-family: "DM Sans", system-ui, sans-serif;
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.045em;
-  text-transform: uppercase;
-  color: var(--color-accent);
+  align-items: center;
+  background: #F4F5F7;
+  border: 2px solid #0F1117;
+  border-radius: 12px;
+  padding: 20px 28px 20px;
+  box-shadow: none;
 }
 
 .method-card h3 {
   margin: 0 0 10px;
   font-family: "Libre Baskerville", Georgia, serif;
-  font-size: 1.08rem;
+  font-size: 1.14rem;
+  font-weight: 800;
   line-height: 1.25;
-  color: var(--color-text-primary);
+  color: #0F1117;
 }
 
 .method-card p {
   margin: 0;
-  font-size: 0.98rem;
-  line-height: 1.62;
-  color: var(--color-text-secondary);
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  color: #0F1117;
 }
 
 .method-card__eq {
   grid-column: 2;
-  grid-row: 1 / span 3;
+  grid-row: 1 / span 2;
   margin-top: 0;
-  padding: 15px 16px;
-  border-radius: 12px;
-  background: rgba(237, 247, 252, 0.82);
-  border: 1px solid rgba(29, 111, 164, 0.12);
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  border: none;
   overflow-x: auto;
+  text-align: center;
 }
 
 .method-card__eq .katex-display {
   margin: 0;
-  font-size: 0.84rem;
+  font-size: 0.9rem;
 }
 
 /* ─── Paper figure ────────────────────────────────────────── */
