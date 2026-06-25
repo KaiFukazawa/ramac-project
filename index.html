@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=gif-epoch-sync-v71" />
+    <link rel="stylesheet" href="styles.css?v=gif-final-frame-v72" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -322,7 +322,7 @@
         <div class="risky-gif-grid reveal" aria-label="2-D risky bandit policy evolution GIFs for DiffusionQL, ORAAC, and RADAC">
           <figure class="risky-gif-card">
             <div class="risky-gif-media">
-              <img src="assets/dql_poster.png" data-gif-src="assets/dql.gif" alt="Diffusion Q-learning policy evolution on the 2-D risky bandit" loading="lazy">
+              <img src="assets/dql_poster.png" data-gif-src="assets/dql.gif" data-final-src="assets/dql_final.png" alt="Diffusion Q-learning policy evolution on the 2-D risky bandit" loading="lazy">
               <button class="gif-start-btn" type="button" aria-label="Start DiffusionQL animation">Start</button>
             </div>
             <div class="gif-epoch" aria-live="polite">Epoch 0</div>
@@ -330,7 +330,7 @@
           </figure>
           <figure class="risky-gif-card">
             <div class="risky-gif-media">
-              <img src="assets/oraac_poster.png" data-gif-src="assets/oraac.gif" alt="ORAAC policy evolution on the 2-D risky bandit" loading="lazy">
+              <img src="assets/oraac_poster.png" data-gif-src="assets/oraac.gif" data-final-src="assets/oraac_final.png" alt="ORAAC policy evolution on the 2-D risky bandit" loading="lazy">
               <button class="gif-start-btn" type="button" aria-label="Start ORAAC animation">Start</button>
             </div>
             <div class="gif-epoch" aria-live="polite">Epoch 0</div>
@@ -338,7 +338,7 @@
           </figure>
           <figure class="risky-gif-card">
             <div class="risky-gif-media">
-              <img src="assets/radac_poster.png" data-gif-src="assets/radac.gif" alt="RADAC policy evolution on the 2-D risky bandit" loading="lazy">
+              <img src="assets/radac_poster.png" data-gif-src="assets/radac.gif" data-final-src="assets/radac_final.png" alt="RADAC policy evolution on the 2-D risky bandit" loading="lazy">
               <button class="gif-start-btn" type="button" aria-label="Start RADAC animation">Start</button>
             </div>
             <div class="gif-epoch" aria-live="polite">Epoch 0</div>
@@ -643,9 +643,12 @@
       }
 
       function finishGifPlayback(media) {
+        const img = media.querySelector('img');
         const btn = media.querySelector('.gif-start-btn');
+        const finalSrc = img.dataset.finalSrc;
         clearGifEpochTimer(media);
         setGifEpoch(media, gifEpochMax);
+        if (finalSrc) img.src = finalSrc;
         media.classList.remove('is-playing');
         btn.textContent = 'Start';
         btn.setAttribute('aria-label', btn.getAttribute('aria-label').replace('Stop', 'Start'));
