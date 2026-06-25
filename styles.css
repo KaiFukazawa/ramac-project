@@ -790,7 +790,7 @@ pre {
   background: #F4F5F7;
 }
 
-.intuition-card h3 {
+.main-section .intuition-card h3 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -1229,7 +1229,7 @@ pre {
     padding: 11px 14px 13px;
   }
 
-  .intuition-card h3 {
+  .main-section .intuition-card h3 {
     font-size: 17px;
   }
 
