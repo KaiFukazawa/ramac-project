@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=solution-cards-v23" />
+    <link rel="stylesheet" href="styles.css?v=solution-cards-v24" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -238,10 +238,11 @@
 
         <div class="method-grid reveal" aria-label="RAMAC methodology components">
           <article class="method-card">
-            <h3>Distributional Critic</h3>
+            <h3>1. Distributional Critic</h3>
             <p>
               RAMAC replaces a mean-value critic with an IQN-style distributional critic
-              \(Z_\phi(s,a;\tau)\), giving direct access to return quantiles and lower-tail risk.
+              \(Z_\phi(s,a;\tau)\) that fits the conditional return law through a quantile TD
+              residual:
             </p>
             <div class="method-card__eq">
               $$\begin{aligned}
@@ -258,14 +259,17 @@
               \Big].
               \end{aligned}$$
             </div>
+            <p>
+              This gives direct access to return quantiles, so lower-tail objectives can be computed
+              from the critic rather than approximated by a scalar mean value.
+            </p>
           </article>
 
           <article class="method-card">
-            <h3>Risk-Aware Generative Actor</h3>
+            <h3>2. Risk-Aware Generative Actor</h3>
             <p>
-              The policy samples actions through a differentiable diffusion/flow path, so the
-              critic's lower-tail signal can shape the same expressive actor used for multimodal
-              behavior modeling.
+              Given a state and latent noise, the expressive actor generates actions through a
+              differentiable diffusion/flow path:
             </p>
             <div class="method-card__eq">
               $$\begin{aligned}
@@ -276,13 +280,17 @@
               \quad \tau_k\sim\mathcal{U}(0,\alpha).
               \end{aligned}$$
             </div>
+            <p>
+              Because this path is differentiable, the critic's lower-tail risk signal, instantiated
+              by CVaR, can shape the same actor used for multimodal behavior modeling.
+            </p>
           </article>
 
           <article class="method-card">
-            <h3>Behavior-Regularized Objective</h3>
+            <h3>3. Behavior-Regularized Objective</h3>
             <p>
-              A behavior-cloning term keeps the actor close to offline data, while the risk term
-              shifts probability away from low-CVaR outcomes.
+              RAMAC combines the actor's native behavior-cloning term with a risk loss that
+              maximizes the critic's lower-tail return estimate:
             </p>
             <div class="method-card__eq">
               $$\begin{aligned}
@@ -302,6 +310,10 @@
               \underbrace{\mathcal{L}_{\mathrm{Risk}}(\theta)}_{\text{tail-risk aversion}}.
               \end{aligned}$$
             </div>
+            <p>
+              The BC term preserves behavior fidelity on offline data, while the risk term reweights
+              modes away from low-CVaR outcomes within a single policy update.
+            </p>
           </article>
         </div>
       </section>
