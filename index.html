@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=remark-cards-v32" />
+    <link rel="stylesheet" href="styles.css?v=critic-note-v33" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -287,21 +287,8 @@
         </div>
 
         <div class="intuition-stack reveal" aria-label="Additional intuition behind RAMAC">
-          <article class="intuition-card">
-            <p class="intuition-card__label">Note</p>
-            <h3>Another intuition: make the critic rich too</h3>
-            <p>
-              If the actor side becomes richer through diffusion or flow policies, the critic side
-              should also become richer. Instead of compressing all future outcomes into a single
-              mean value, a distributional critic models the range of possible returns induced by
-              stochastic dynamics, rewards, and policy behavior. This gives the actor a more
-              informative signal: not only “which action has high average value,” but also
-              “which action has a dangerous lower tail.”
-            </p>
-          </article>
-
           <article class="intuition-card intuition-card--note">
-            <p class="intuition-card__label">Remark</p>
+            <p class="intuition-card__label">Note</p>
             <h3>Why not use a diffusion/flow critic?</h3>
             <p>
               Expressive generative critics are an exciting direction: recent work has begun using

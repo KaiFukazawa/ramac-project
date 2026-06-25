@@ -779,8 +779,8 @@ pre {
 .intuition-stack {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
-  margin: 18px auto 0;
+  gap: 0;
+  margin: 16px auto 0;
 }
 
 .intuition-card {
@@ -810,9 +810,9 @@ pre {
 }
 
 .intuition-card h3 {
-  margin: 0 0 7px;
+  margin: 0 0 6px;
   font-family: "Libre Baskerville", Georgia, serif;
-  font-size: clamp(1.05rem, 1.35vw, 1.28rem);
+  font-size: clamp(0.98rem, 1.15vw, 1.14rem);
   font-weight: 700;
   line-height: 1.24;
   letter-spacing: -0.01em;
@@ -823,7 +823,7 @@ pre {
 .intuition-card p {
   margin: 0;
   font-family: "Libre Baskerville", Georgia, serif;
-  font-size: 14px;
+  font-size: 13.25px;
   font-weight: 700;
   line-height: 1.56;
   letter-spacing: -0.014em;
@@ -1237,11 +1237,11 @@ pre {
   }
 
   .intuition-card h3 {
-    font-size: 1.05rem;
+    font-size: 0.98rem;
   }
 
   .intuition-card p {
-    font-size: 13.5px;
+    font-size: 13px;
   }
 
   .gap-lead-list {
