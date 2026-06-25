@@ -862,7 +862,9 @@ pre {
 
 .br-key-takeaway .takeaway-plain strong {
   font-family: "DM Sans", sans-serif;
+  font-size: 1.12em;
   font-weight: 800;
+  line-height: 1;
 }
 
 .br-key-takeaway a {
