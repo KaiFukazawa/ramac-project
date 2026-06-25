@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=compact-note-v35" />
+    <link rel="stylesheet" href="styles.css?v=objective-flow-v36" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -240,14 +240,15 @@
           </li>
         </ul>
 
-        <div class="method-grid reveal" aria-label="RAMAC methodology components">
-          <article class="method-card">
-            <h3>Behavior-Regularized Objective</h3>
-            <p>
-              RAMAC combines the actor's native behavior-cloning term with a risk loss that
-              maximizes the critic's lower-tail return estimate:
-            </p>
-            <div class="method-card__eq">
+        <div class="method-grid objective-flow reveal" aria-label="RAMAC methodology components">
+          <ul class="objective-bullets">
+            <li>
+              RAMAC uses two actor-side signals: a lower-tail risk loss from the distributional
+              critic and a behavior-cloning loss that keeps the same actor close to offline data.
+            </li>
+          </ul>
+          <div class="objective-eq-row" aria-label="RAMAC risk and behavior losses">
+            <div class="objective-eq">
               $$\begin{aligned}
               \mathcal{L}_{\mathrm{Risk}}(\theta)
               &=
@@ -255,10 +256,7 @@
               \big[\mathrm{CVaR}_\alpha(Z_\phi(s,a))\big].
               \end{aligned}$$
             </div>
-            <p>
-              The behavior-cloning term anchors the same actor to dataset actions:
-            </p>
-            <div class="method-card__eq">
+            <div class="objective-eq">
               $$\begin{aligned}
               \mathcal{L}_{\mathrm{BC}}(\theta)
               &=
@@ -266,10 +264,14 @@
               \big[\log \pi_\theta(a\mid s)\big].
               \end{aligned}$$
             </div>
-            <p>
-              RAMAC combines these two terms into one actor objective:
-            </p>
-            <div class="method-card__eq">
+          </div>
+          <ul class="objective-bullets">
+            <li>
+              These terms are combined into one behavior-regularized actor objective, so
+              risk-aware mode reweighting happens within a single generative policy update.
+            </li>
+          </ul>
+          <div class="objective-eq objective-eq--final">
               $$\begin{aligned}
               \mathcal{L}_{\pi}(\theta)
               &=
@@ -278,12 +280,7 @@
               \eta\,
               \underbrace{\mathcal{L}_{\mathrm{Risk}}(\theta)}_{\text{tail-risk aversion}}.
               \end{aligned}$$
-            </div>
-            <p>
-              The BC term preserves behavior fidelity on offline data, while the risk term reweights
-              modes away from low-CVaR outcomes within a single policy update.
-            </p>
-          </article>
+          </div>
         </div>
 
         <div class="intuition-stack reveal" aria-label="Additional intuition behind RAMAC">

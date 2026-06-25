@@ -720,56 +720,56 @@ pre {
   color: var(--color-text-secondary);
 }
 
-/* ─── Method cards ────────────────────────────────────────── */
+/* ─── Objective flow ──────────────────────────────────────── */
 
 .method-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
-  margin: 20px auto 0;
+  gap: 12px;
+  margin: 18px auto 0;
 }
 
-.method-card {
-  display: block;
-  background: #EDF7FC;
-  border: 2px solid rgba(29, 111, 164, 0.28);
-  border-radius: 18px;
-  padding: 2px 14px 18px;
-  box-shadow: 0 14px 34px rgba(20, 54, 94, 0.08);
+.objective-flow {
+  max-width: 980px;
 }
 
-.method-card h3 {
-  margin: 0 0 6px;
-  font-family: "Libre Baskerville", Georgia, serif;
-  font-size: var(--text-hero);
-  font-weight: 700;
-  line-height: 1.16;
-  letter-spacing: -0.01em;
-  color: #177EAD !important;
-  text-align: left;
-}
-
-.method-card p {
+.objective-bullets {
   margin: 0;
+  padding-left: 1.2em;
   font-family: "Libre Baskerville", Georgia, serif;
-  font-size: 16px;
   font-weight: 700;
+  font-size: 16px;
   line-height: 1.58;
   letter-spacing: -0.018em;
   color: #0F1117;
 }
 
-.method-card__eq {
-  margin: 10px 0;
+.objective-bullets li {
+  margin: 0;
+}
+
+.objective-eq-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  align-items: center;
+  margin: 2px 0 4px;
+}
+
+.objective-eq {
+  margin: 0;
   padding: 0;
-  border-radius: 0;
-  background: transparent;
   border: none;
+  background: transparent;
   overflow-x: auto;
   text-align: center;
 }
 
-.method-card__eq .katex-display {
+.objective-eq--final {
+  margin-top: 0;
+}
+
+.objective-eq .katex-display {
   margin: 0;
   font-size: 1.08rem;
 }
@@ -1143,6 +1143,11 @@ pre {
 @media (max-width: 899px) {
   .method-grid {
     grid-template-columns: 1fr;
+  }
+
+  .objective-eq-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 }
 
