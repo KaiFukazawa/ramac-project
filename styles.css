@@ -780,43 +780,43 @@ pre {
   display: grid;
   grid-template-columns: 1fr;
   gap: 0;
-  margin: 12px auto 0;
+  margin: 10px auto 0;
 }
 
 .intuition-card {
   display: block;
-  background: #F3F5F7;
-  border: 1.5px solid rgba(71, 84, 103, 0.18);
-  border-left: 5px solid rgba(23, 126, 173, 0.45);
-  border-radius: 14px;
-  padding: 10px 16px 14px;
-  box-shadow: 0 10px 24px rgba(20, 54, 94, 0.05);
+  background: #ECEFF2;
+  border: 1px solid rgba(47, 61, 76, 0.22);
+  border-left: 4px solid rgba(71, 84, 103, 0.62);
+  border-radius: 12px;
+  padding: 8px 14px 11px;
+  box-shadow: 0 8px 18px rgba(20, 36, 54, 0.06);
 }
 
 .intuition-card--note {
-  background: #F7F7F5;
-  border-left-color: rgba(92, 107, 122, 0.48);
+  background: #ECEFF2;
+  border-left-color: rgba(71, 84, 103, 0.62);
 }
 
 .intuition-card h3 {
-  margin: 0 0 5px;
+  margin: 0 0 4px;
   font-family: "Libre Baskerville", Georgia, serif;
-  font-size: clamp(0.9rem, 1.05vw, 1.02rem);
+  font-size: clamp(0.82rem, 0.95vw, 0.94rem);
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.01em;
-  color: #2F5F7A !important;
+  color: #334155 !important;
   text-align: left;
 }
 
 .intuition-card p {
   margin: 0;
   font-family: "Libre Baskerville", Georgia, serif;
-  font-size: 12.75px;
+  font-size: 12px;
   font-weight: 700;
-  line-height: 1.56;
+  line-height: 1.5;
   letter-spacing: -0.014em;
-  color: #27313F;
+  color: #243040;
 }
 
 /* ─── Paper figure ────────────────────────────────────────── */
@@ -1222,15 +1222,15 @@ pre {
   }
 
   .intuition-card {
-    padding: 10px 14px 13px;
+    padding: 8px 12px 10px;
   }
 
   .intuition-card h3 {
-    font-size: 0.9rem;
+    font-size: 0.82rem;
   }
 
   .intuition-card p {
-    font-size: 12.75px;
+    font-size: 11.75px;
   }
 
   .gap-lead-list {
