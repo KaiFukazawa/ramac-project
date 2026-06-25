@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=solution-cards-v24" />
+    <link rel="stylesheet" href="styles.css?v=solution-list-v25" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -226,15 +226,19 @@
 
       <section class="main-section" id="approach">
         <h2 class="reveal">Solution Idea</h2>
-        <p class="section-prose reveal">
-          The key idea behind RAMAC is simple: take the behavior-regularized actor-critic
-          template that already works well for expressive generative policies, replace the
-          mean critic with a distributional critic, and backpropagate lower-tail risk signals
-          directly through the diffusion/flow actor. This turns risk-aware offline RL into a
-          single-policy training problem: the actor remains behavior-regularized to stay near
-          data support, while the critic's CVaR signal reweights the same generative policy
-          away from catastrophic modes.
-        </p>
+        <ul class="section-prose solution-list reveal">
+          <li>
+            The key idea behind RAMAC is simple: take the behavior-regularized actor-critic
+            template that already works well for expressive generative policies, replace the
+            mean critic with a distributional critic, and backpropagate lower-tail risk signals
+            directly through the diffusion/flow actor.
+          </li>
+          <li>
+            This turns risk-aware offline RL into a single-policy training problem: the actor
+            remains behavior-regularized to stay near data support, while the critic's CVaR signal
+            reweights the same generative policy away from catastrophic modes.
+          </li>
+        </ul>
 
         <div class="method-grid reveal" aria-label="RAMAC methodology components">
           <article class="method-card">
