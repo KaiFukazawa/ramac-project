@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=gif-reset-v69" />
+    <link rel="stylesheet" href="styles.css?v=gif-epoch-v70" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -319,19 +319,21 @@
           <img src="assets/toy_full.png" alt="Full 2-D risky bandit results comparing policy distributions across methods" loading="lazy">
         </details>
 
-        <div class="risky-gif-grid reveal" aria-label="2-D risky bandit policy evolution GIFs for DQL, ORAAC, and RADAC">
+        <div class="risky-gif-grid reveal" aria-label="2-D risky bandit policy evolution GIFs for DiffusionQL, ORAAC, and RADAC">
           <figure class="risky-gif-card">
             <div class="risky-gif-media">
               <img src="assets/dql_poster.png" data-gif-src="assets/dql.gif" alt="Diffusion Q-learning policy evolution on the 2-D risky bandit" loading="lazy">
-              <button class="gif-start-btn" type="button" aria-label="Start DQL animation">Start</button>
+              <button class="gif-start-btn" type="button" aria-label="Start DiffusionQL animation">Start</button>
             </div>
-            <figcaption>DQL</figcaption>
+            <div class="gif-epoch" aria-live="polite">Epoch 0</div>
+            <figcaption>DiffusionQL</figcaption>
           </figure>
           <figure class="risky-gif-card">
             <div class="risky-gif-media">
               <img src="assets/oraac_poster.png" data-gif-src="assets/oraac.gif" alt="ORAAC policy evolution on the 2-D risky bandit" loading="lazy">
               <button class="gif-start-btn" type="button" aria-label="Start ORAAC animation">Start</button>
             </div>
+            <div class="gif-epoch" aria-live="polite">Epoch 0</div>
             <figcaption>ORAAC</figcaption>
           </figure>
           <figure class="risky-gif-card">
@@ -339,6 +341,7 @@
               <img src="assets/radac_poster.png" data-gif-src="assets/radac.gif" alt="RADAC policy evolution on the 2-D risky bandit" loading="lazy">
               <button class="gif-start-btn" type="button" aria-label="Start RADAC animation">Start</button>
             </div>
+            <div class="gif-epoch" aria-live="polite">Epoch 0</div>
             <figcaption>RADAC</figcaption>
           </figure>
         </div>
@@ -347,7 +350,7 @@
           while moving probability away from rare lower-tail hazards.</em>
         </p>
         <p class="table-caption reveal">
-          <em>Left to right: DQL chases risk-neutral high-value regions, ORAAC can leak through
+          <em>Left to right: DiffusionQL chases risk-neutral high-value regions, ORAAC can leak through
           low-density inter-mode regions, and RADAC shifts mass toward the safe center while
           preserving supported behavior.</em>
         </p>
@@ -610,12 +613,53 @@
       revealEls.forEach(el => revealObserver.observe(el));
 
       // Toggle GIF playback by swapping between poster frames and animated GIFs.
+      const gifEpochStep = 50;
+      const gifEpochMax = 1000;
+      const gifFrameMs = 200;
+
+      function setGifEpoch(media, epoch) {
+        const card = media.closest('.risky-gif-card');
+        const epochEl = card && card.querySelector('.gif-epoch');
+        if (epochEl) epochEl.textContent = `Epoch ${epoch}`;
+      }
+
+      function clearGifEpochTimer(media) {
+        if (media.dataset.epochTimer) {
+          clearInterval(Number(media.dataset.epochTimer));
+          delete media.dataset.epochTimer;
+        }
+      }
+
+      function finishGifPlayback(media) {
+        const btn = media.querySelector('.gif-start-btn');
+        clearGifEpochTimer(media);
+        setGifEpoch(media, gifEpochMax);
+        media.classList.remove('is-playing');
+        btn.textContent = 'Start';
+        btn.setAttribute('aria-label', btn.getAttribute('aria-label').replace('Stop', 'Start'));
+      }
+
+      function startGifEpochTimer(media) {
+        let epoch = 0;
+        clearGifEpochTimer(media);
+        setGifEpoch(media, epoch);
+        media.dataset.epochTimer = window.setInterval(() => {
+          epoch = Math.min(epoch + gifEpochStep, gifEpochMax);
+          setGifEpoch(media, epoch);
+          if (epoch >= gifEpochMax) {
+            finishGifPlayback(media);
+          }
+        }, gifFrameMs);
+      }
+
       function resetGifMedia(media) {
         const img = media.querySelector('img');
         const btn = media.querySelector('.gif-start-btn');
         const posterSrc = img.dataset.posterSrc || img.src;
+        clearGifEpochTimer(media);
         img.dataset.posterSrc = posterSrc;
         img.src = posterSrc;
+        setGifEpoch(media, 0);
         media.classList.remove('is-playing');
         btn.textContent = 'Start';
         btn.setAttribute('aria-label', btn.getAttribute('aria-label').replace('Stop', 'Start'));
@@ -637,6 +681,7 @@
             media.classList.add('is-playing');
             btn.textContent = '||';
             btn.setAttribute('aria-label', btn.getAttribute('aria-label').replace('Start', 'Stop'));
+            startGifEpochTimer(media);
           }
         });
       });

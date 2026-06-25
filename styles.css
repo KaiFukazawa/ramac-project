@@ -1076,8 +1076,18 @@ pre {
   text-transform: none;
 }
 
+.gif-epoch {
+  margin-top: 8px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: #177EAD;
+}
+
 .risky-gif-card figcaption {
-  margin-top: 10px;
+  margin-top: 5px;
   font-family: "Libre Baskerville", Georgia, serif;
   font-size: 16px;
   font-weight: 800;
