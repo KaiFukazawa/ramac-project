@@ -790,11 +790,13 @@ pre {
 }
 
 .intuition-card h3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   margin: 0 0 6px;
   font-family: "Libre Baskerville", Georgia, serif;
-  font-size: 14px;
+  font-size: 19px;
   font-weight: 800;
-  line-height: 1.2;
   letter-spacing: -0.018em;
   color: #0F1117 !important;
   text-align: left;
@@ -1226,7 +1228,7 @@ pre {
   }
 
   .intuition-card h3 {
-    font-size: 13px;
+    font-size: 17px;
   }
 
   .intuition-card p {
