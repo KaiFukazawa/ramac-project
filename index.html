@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=single-policy-label-v53" />
+    <link rel="stylesheet" href="styles.css?v=br-matters-v54" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -43,7 +43,6 @@
         <a href="#overview" class="nav-link">Overview</a>
         <a href="#gap" class="nav-link">The Gap</a>
         <a href="#approach" class="nav-link">Idea</a>
-        <a href="#theory" class="nav-link">Why It Works</a>
         <a href="#experiments" class="nav-link">Experiments</a>
         <a href="#citation" class="nav-link">Citation</a>
       </div>
@@ -254,6 +253,42 @@
           </div>
         </div>
 
+        <div class="br-subsection reveal" aria-label="Why behavior regularization matters">
+          <h3>Why Behavior Regularization Matters</h3>
+          <ul>
+            <li>
+              In contrast to prior-anchored perturbation, RAMAC applies behavior regularization
+              directly to the deployed generative policy \(\pi_\theta\).
+            </li>
+            <li>
+              Shrinking the forward KL suppresses probability mass outside the behavior support,
+              yielding a per-state OOD probability bound.
+            </li>
+            <li>
+              CVaR is amplified by \(1/\alpha\) under distribution shift, so controlling behavior
+              mismatch also stabilizes lower-tail objectives.
+            </li>
+          </ul>
+
+          <div class="br-theory-box" aria-label="Formal OOD and CVaR stability links">
+            $$\delta_s(\pi_\theta)
+            \le
+            1-\exp\!\left\{-D_{\mathrm{KL}}\!\left(\beta(\cdot\mid s)\,\Vert\,\pi_\theta(\cdot\mid s)\right)\right\}$$
+            $$\big|\mathrm{CVaR}_{\alpha}^{\beta}
+            -
+            \mathrm{CVaR}_{\alpha}^{\pi_\theta}\big|
+            \le
+            \frac{M-m}{\alpha}
+            \sqrt{\frac{1}{2}
+            D_{\mathrm{KL}}\!\left(\beta(\cdot\mid s)\,\Vert\,\pi_\theta(\cdot\mid s)\right)}$$
+          </div>
+
+          <p class="br-takeaway">
+            These bounds formally link risk-awareness and OOD control: behavior regularization
+            suppresses OOD actions while stabilizing CVaR under distribution shift.
+          </p>
+        </div>
+
         <div class="intuition-stack reveal" aria-label="Additional intuition behind RAMAC">
           <article class="intuition-card intuition-card--note">
             <h3>Note: Why not use a diffusion/flow critic?</h3>
@@ -267,37 +302,6 @@
               with direct access to specific regions of the return distribution.
             </p>
           </article>
-        </div>
-      </section>
-      <hr class="section-rule">
-
-      <section class="main-section" id="theory">
-        <p class="theory-eyebrow reveal">Theoretical Insight</p>
-        <h2 class="reveal">Why It Works</h2>
-        <p class="section-prose reveal">
-          Prior-anchored perturbation methods like ORAAC cannot fully eliminate
-          out-of-distribution actions: on thin or nonconvex supports, the anchor ball
-          inevitably overlaps the out-of-support region, leaving a strictly positive OOD
-          probability no matter how the residual policy is trained. RAMAC instead applies
-          BC regularization directly to the deployed generative policy — and we prove this
-          yields a hard upper bound on per-state OOD probability.
-        </p>
-
-        <div class="prop1-box reveal">
-          <p class="prop1-label">OOD Probability Bound</p>
-          <p class="prop1-body">
-            For each state <em>s</em>, the per-state OOD probability
-            δ<sub>s</sub>(π<sub>θ</sub>) satisfies:
-          </p>
-          <div role="math" aria-label="OOD probability bound: delta-s of pi-theta is at most one minus exp of negative KL divergence from beta to pi-theta">
-            $$\delta_s(\pi_\theta) \;\leq\; 1 - \exp\!\left\{
-              -D_{\mathrm{KL}}\!\left(\beta(\cdot\mid s)\,\|\,\pi_\theta(\cdot\mid s)\right)
-            \right\}$$
-          </div>
-          <p class="prop1-interp">
-            <em>Shrinking the forward-KL via BC directly suppresses per-state OOD
-            probability — with the strength of the effect controlled by η in Eq.&nbsp;12.</em>
-          </p>
         </div>
       </section>
       <hr class="section-rule">
