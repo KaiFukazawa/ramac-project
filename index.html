@@ -505,11 +505,17 @@
             </tbody>
           </table>
         </div>
-        <p class="table-caption reveal">
-          <em>Table 1. Stochastic-D4RL results over 5 seeds. Best per row bold.
-          RADAC achieves consistently stronger tail returns (CVaR<sub>0.1</sub>) across most tasks.</em>
-        </p>
-        <p class="table-footnote reveal">Full results with standard errors appear in Appendix E.2 of the paper.</p>
+        <ul class="experiment-notes experiment-notes--table reveal">
+          <li>
+            Stochastic-D4RL evaluates six D4RL locomotion datasets augmented with rare
+            heavy-tailed penalties; we report mean return and episodic CVaR<sub>0.1</sub>
+            over 5 seeds.
+          </li>
+          <li>
+            Best results are bolded. RADAC achieves consistently stronger lower-tail returns
+            across most tasks while preserving competitive mean performance.
+          </li>
+        </ul>
 
         <h3 class="subsection-heading reveal">OOD Action Rate</h3>
         <p class="section-prose reveal">
