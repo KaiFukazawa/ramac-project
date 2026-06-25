@@ -774,6 +774,49 @@ pre {
   font-size: 1.08rem;
 }
 
+/* ─── Intuition cards ─────────────────────────────────────── */
+
+.intuition-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 22px auto 0;
+}
+
+.intuition-card {
+  display: block;
+  background: #EDF7FC;
+  border: 2px solid rgba(29, 111, 164, 0.28);
+  border-radius: 18px;
+  padding: 8px 18px 20px;
+  box-shadow: 0 14px 34px rgba(20, 54, 94, 0.08);
+}
+
+.intuition-card--note {
+  background: #F4F8FB;
+}
+
+.intuition-card h3 {
+  margin: 0 0 8px;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: clamp(1.35rem, 2.1vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  color: #177EAD !important;
+  text-align: left;
+}
+
+.intuition-card p {
+  margin: 0;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.58;
+  letter-spacing: -0.018em;
+  color: #0F1117;
+}
+
 /* ─── Paper figure ────────────────────────────────────────── */
 
 .paper-figure {
@@ -1174,6 +1217,18 @@ pre {
 
   .overview-box__body {
     font-size: 17px;
+  }
+
+  .intuition-card {
+    padding: 8px 16px 18px;
+  }
+
+  .intuition-card h3 {
+    font-size: 1.35rem;
+  }
+
+  .intuition-card p {
+    font-size: 15px;
   }
 
   .gap-lead-list {

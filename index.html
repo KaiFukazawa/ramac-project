@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=objective-card-v30" />
+    <link rel="stylesheet" href="styles.css?v=intuition-cards-v31" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -291,6 +291,33 @@
             <p>
               The BC term preserves behavior fidelity on offline data, while the risk term reweights
               modes away from low-CVaR outcomes within a single policy update.
+            </p>
+          </article>
+        </div>
+
+        <div class="intuition-stack reveal" aria-label="Additional intuition behind RAMAC">
+          <article class="intuition-card">
+            <h3>Another intuition: make the critic rich too</h3>
+            <p>
+              If the actor side becomes richer through diffusion or flow policies, the critic side
+              should also become richer. Instead of compressing all future outcomes into a single
+              mean value, a distributional critic models the range of possible returns induced by
+              stochastic dynamics, rewards, and policy behavior. This gives the actor a more
+              informative signal: not only “which action has high average value,” but also
+              “which action has a dangerous lower tail.”
+            </p>
+          </article>
+
+          <article class="intuition-card intuition-card--note">
+            <h3>Why not use a diffusion/flow critic?</h3>
+            <p>
+              Expressive generative critics are an exciting direction: recent work has begun using
+              flow- or diffusion-style architectures to scale value learning. However, many of these
+              directions primarily target stability, capacity, or risk-neutral value prediction.
+              For RAMAC, IQN is a natural first choice because it directly outputs quantiles, making
+              CVaR easy to compute by averaging the lower tail. A future extension could learn
+              quantile-conditioned flow or diffusion critics, combining generative critic capacity
+              with direct access to specific regions of the return distribution.
             </p>
           </article>
         </div>
