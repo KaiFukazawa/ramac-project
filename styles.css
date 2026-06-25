@@ -1041,26 +1041,26 @@ pre {
 
 .gif-start-btn {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border: 2px solid #0F1117;
+  left: 10px;
+  bottom: 10px;
+  transform: none;
+  border: 1px solid rgba(15, 17, 23, 0.42);
   border-radius: 999px;
-  padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.92);
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.86);
   color: #0F1117;
   cursor: pointer;
   font-family: "DM Sans", sans-serif;
-  font-size: 14px;
-  font-weight: 900;
+  font-size: 11px;
+  font-weight: 800;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  box-shadow: 0 10px 22px rgba(15, 17, 23, 0.16);
+  box-shadow: 0 4px 10px rgba(15, 17, 23, 0.10);
   transition: transform 0.18s ease, background 0.18s ease;
 }
 
 .gif-start-btn:hover {
-  transform: translate(-50%, -50%) scale(1.04);
+  transform: translateY(-1px);
   background: #FFFFFF;
 }
 
