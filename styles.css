@@ -723,19 +723,22 @@ pre {
 /* ─── Objective flow ──────────────────────────────────────── */
 
 .method-grid {
-  display: grid;
-  grid-template-columns: minmax(150px, 0.34fr) minmax(0, 1fr);
-  gap: 16px;
+  display: block;
   margin: 14px auto 0;
-  align-items: center;
 }
 
 .objective-flow {
   max-width: 980px;
+  position: relative;
 }
 
 .objective-label {
   margin: 0;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  max-width: 180px;
+  transform: translateY(-50%);
   font-family: "Libre Baskerville", Georgia, serif;
   font-weight: 700;
   font-size: 0.95rem;
@@ -752,6 +755,7 @@ pre {
   background: transparent;
   overflow-x: auto;
   text-align: center;
+  width: 100%;
 }
 
 .objective-eq--final {
@@ -769,30 +773,30 @@ pre {
   display: grid;
   grid-template-columns: 1fr;
   gap: 0;
-  margin: 8px auto 0;
+  margin: 6px auto 0;
 }
 
 .intuition-card {
   display: block;
-  background: #ECEFF2;
-  border: 1px solid rgba(47, 61, 76, 0.22);
-  border-left: 4px solid rgba(71, 84, 103, 0.62);
-  border-radius: 10px;
-  padding: 6px 12px 8px;
-  box-shadow: 0 6px 14px rgba(20, 36, 54, 0.05);
+  background: #E1E6EA;
+  border: 1px solid rgba(47, 61, 76, 0.24);
+  border-left: 3px solid rgba(71, 84, 103, 0.68);
+  border-radius: 8px;
+  padding: 4px 10px 6px;
+  box-shadow: 0 4px 10px rgba(20, 36, 54, 0.05);
 }
 
 .intuition-card--note {
-  background: #ECEFF2;
-  border-left-color: rgba(71, 84, 103, 0.62);
+  background: #E1E6EA;
+  border-left-color: rgba(71, 84, 103, 0.68);
 }
 
 .intuition-card h3 {
-  margin: 0 0 3px;
+  margin: 0 0 2px;
   font-family: "Libre Baskerville", Georgia, serif;
-  font-size: clamp(0.62rem, 0.7vw, 0.7rem);
+  font-size: clamp(0.52rem, 0.6vw, 0.6rem);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.12;
   letter-spacing: -0.01em;
   color: #334155 !important;
   text-align: left;
@@ -801,9 +805,9 @@ pre {
 .intuition-card p {
   margin: 0;
   font-family: "Libre Baskerville", Georgia, serif;
-  font-size: 15px;
+  font-size: 15.5px;
   font-weight: 700;
-  line-height: 1.45;
+  line-height: 1.34;
   letter-spacing: -0.014em;
   color: #243040;
 }
@@ -1131,11 +1135,15 @@ pre {
 
 @media (max-width: 899px) {
   .method-grid {
+    display: grid;
     grid-template-columns: 1fr;
     gap: 6px;
   }
 
   .objective-label {
+    position: static;
+    max-width: none;
+    transform: none;
     text-align: center;
   }
 }
@@ -1216,15 +1224,15 @@ pre {
   }
 
   .intuition-card {
-    padding: 6px 10px 8px;
+    padding: 4px 8px 6px;
   }
 
   .intuition-card h3 {
-    font-size: 0.62rem;
+    font-size: 0.52rem;
   }
 
   .intuition-card p {
-    font-size: 14px;
+    font-size: 14.5px;
   }
 
   .gap-lead-list {
