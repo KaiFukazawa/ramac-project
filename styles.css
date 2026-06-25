@@ -1140,11 +1140,11 @@ pre {
 }
 
 .result-image-wrap--d4rl {
-  width: min(calc(100vw - 2rem), 1120px);
+  width: min(calc(100vw - 2rem), 1160px);
   max-width: none;
   margin-left: auto;
   margin-right: auto;
-  transform: translateX(-28px);
+  transform: translateX(-70px);
 }
 
 .result-image--d4rl {
