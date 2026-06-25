@@ -737,7 +737,7 @@ pre {
   position: absolute;
   left: 0;
   top: 50%;
-  max-width: 180px;
+  max-width: 260px;
   transform: translateY(-50%);
   font-family: "Libre Baskerville", Georgia, serif;
   font-weight: 700;
@@ -746,6 +746,7 @@ pre {
   letter-spacing: -0.012em;
   color: #177EAD;
   text-align: left;
+  white-space: nowrap;
 }
 
 .objective-eq {
@@ -1145,6 +1146,7 @@ pre {
     max-width: none;
     transform: none;
     text-align: center;
+    white-space: normal;
   }
 }
 
