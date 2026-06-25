@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=solution-idea-v19" />
+    <link rel="stylesheet" href="styles.css?v=solution-idea-v21" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -245,11 +245,19 @@
               \(Z_\phi(s,a;\tau)\), giving direct access to return quantiles and lower-tail risk.
             </p>
             <div class="method-card__eq">
-              $$\mathrm{CVaR}_\alpha(Z_\phi(s,a))
-              \approx
-              \frac{1}{K}\sum_{k=1}^{K} Z_\phi(s,a;\tau_k),
-              \quad
-              \tau_k \sim \mathcal{U}(0,\alpha)$$
+              $$\begin{aligned}
+              \delta_\phi
+              &:= r+\gamma Z_{\bar\phi}(s',a';\tau')-Z_\phi(s,a;\tau),\\
+              \mathcal{L}_{\mathrm{Critic}}(\phi)
+              &= \mathbb{E}_{
+              \substack{
+              (s,a,r,s')\sim\mathcal{D},\\
+              a'\sim\pi_\theta(\cdot|s'),\ \tau,\tau'\sim\mathcal{U}(0,1)
+              }}
+              \Big[
+              \mathcal{L}_\kappa\!\big(\delta_\phi;\tau\big)
+              \Big].
+              \end{aligned}$$
             </div>
           </article>
 
@@ -262,9 +270,13 @@
               behavior modeling.
             </p>
             <div class="method-card__eq">
-              $$a = \psi_\theta(s,z),
-              \qquad
-              z \sim \mathcal{N}(0,I)$$
+              $$\begin{aligned}
+              a &= \psi_\theta(s,z), \qquad z \sim \mathcal{N}(0,I),\\
+              \mathrm{CVaR}_\alpha\!\bigl(Z_\phi(s,a)\bigr)
+              &= \frac{1}{\alpha}\int_0^\alpha Z_\phi(s,a;\tau)\,d\tau\\
+              &\approx \frac{1}{K}\sum_{k=1}^{K} Z_\phi(s,a;\tau_k),
+              \quad \tau_k\sim\mathcal{U}(0,\alpha).
+              \end{aligned}$$
             </div>
           </article>
 
@@ -276,29 +288,25 @@
               shifts probability away from low-CVaR outcomes.
             </p>
             <div class="method-card__eq">
-              $$\mathcal{L}_\pi(\theta)
-              =
+              $$\begin{aligned}
+              \mathcal{L}_{\mathrm{Risk}}(\theta)
+              &=
+              -\mathbb{E}_{s\sim\mathcal{D},\,a\sim\pi_\theta(\cdot\mid s)}
+              \big[\mathrm{CVaR}_\alpha(Z_\phi(s,a))\big],\\
               \mathcal{L}_{\mathrm{BC}}(\theta)
+              &=
+              -\mathbb{E}_{(s,a)\sim\mathcal{D}}
+              \big[\log \pi_\theta(a\mid s)\big],\\
+              \mathcal{L}_{\pi}(\theta)
+              &=
+              \underbrace{\mathcal{L}_{\mathrm{BC}}(\theta)}_{\text{data fidelity}}
               +
-              \eta\,\mathcal{L}_{\mathrm{Risk}}(\theta)$$
+              \eta\,
+              \underbrace{\mathcal{L}_{\mathrm{Risk}}(\theta)}_{\text{tail-risk aversion}}.
+              \end{aligned}$$
             </div>
           </article>
         </div>
-
-        <figure class="paper-figure reveal">
-          <img
-            src="assets/ramac_evolutions_edit.png"
-            alt="RAMAC pipeline showing the distributional critic Zφ fitting the return distribution and aggregating its lower tail into a CVaR signal, then differentiating through the generative actor πθ trained with composite BC plus CVaR objective"
-            class="paper-figure__img"
-            loading="lazy"
-          />
-          <figcaption class="paper-figure__caption">
-            <em>Figure 1. RAMAC pipeline. The distributional critic Z<sub>φ</sub> fits the
-            return distribution and aggregates its lower tail into a CVaR signal. The same
-            diffusion/flow actor receives this lower-tail guidance while behavior regularization
-            keeps updates near dataset-supported modes.</em>
-          </figcaption>
-        </figure>
       </section>
       <hr class="section-rule">
 
