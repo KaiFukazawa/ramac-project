@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=gap-title-direct-v18" />
+    <link rel="stylesheet" href="styles.css?v=solution-idea-v19" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -42,7 +42,7 @@
       <div class="sticky-nav__inner">
         <a href="#overview" class="nav-link">Overview</a>
         <a href="#gap" class="nav-link">The Gap</a>
-        <a href="#approach" class="nav-link">Our Approach</a>
+        <a href="#approach" class="nav-link">Solution Idea</a>
         <a href="#theory" class="nav-link">Why It Works</a>
         <a href="#experiments" class="nav-link">Experiments</a>
         <a href="#citation" class="nav-link">Citation</a>
@@ -225,15 +225,65 @@
       <hr class="section-rule">
 
       <section class="main-section" id="approach">
-        <h2 class="reveal">Our Approach</h2>
+        <h2 class="reveal">Solution Idea</h2>
         <p class="section-prose reveal">
-          RAMAC operates in two stages. A <strong>distributional critic</strong> (IQN) learns
-          the full conditional return distribution, giving access to calibrated lower-tail
-          quantiles. A <strong>generative actor</strong> — instantiated as a diffusion policy
-          (RADAC) — is trained jointly on two objectives: a BC term that keeps actions on the
-          data manifold, and a CVaR term that shifts probability mass away from low-quantile
-          outcomes.
+          The key idea behind RAMAC is simple: take the behavior-regularized actor-critic
+          template that already works well for expressive generative policies, replace the
+          mean critic with a distributional critic, and backpropagate lower-tail risk signals
+          directly through the diffusion/flow actor. This turns risk-aware offline RL into a
+          single-policy training problem: the actor remains behavior-regularized to stay near
+          data support, while the critic's CVaR signal reweights the same generative policy
+          away from catastrophic modes.
         </p>
+
+        <div class="method-grid reveal" aria-label="RAMAC methodology components">
+          <article class="method-card">
+            <p class="method-card__kicker">Expose the lower tail</p>
+            <h3>Distributional Critic</h3>
+            <p>
+              RAMAC replaces a mean-value critic with an IQN-style distributional critic
+              \(Z_\phi(s,a;\tau)\), giving direct access to return quantiles and lower-tail risk.
+            </p>
+            <div class="method-card__eq">
+              $$\mathrm{CVaR}_\alpha(Z_\phi(s,a))
+              \approx
+              \frac{1}{K}\sum_{k=1}^{K} Z_\phi(s,a;\tau_k),
+              \quad
+              \tau_k \sim \mathcal{U}(0,\alpha)$$
+            </div>
+          </article>
+
+          <article class="method-card">
+            <p class="method-card__kicker">Receive risk gradients through the generative path</p>
+            <h3>Expressive Generative Actor</h3>
+            <p>
+              The policy samples actions through a differentiable diffusion/flow path, so the
+              critic's lower-tail signal can shape the same expressive actor used for multimodal
+              behavior modeling.
+            </p>
+            <div class="method-card__eq">
+              $$a = \psi_\theta(s,z),
+              \qquad
+              z \sim \mathcal{N}(0,I)$$
+            </div>
+          </article>
+
+          <article class="method-card">
+            <p class="method-card__kicker">Reweight modes while preserving behavior fidelity</p>
+            <h3>Single Composite Objective</h3>
+            <p>
+              A behavior-cloning term keeps the actor close to offline data, while the risk term
+              shifts probability away from low-CVaR outcomes.
+            </p>
+            <div class="method-card__eq">
+              $$\mathcal{L}_\pi(\theta)
+              =
+              \mathcal{L}_{\mathrm{BC}}(\theta)
+              +
+              \eta\,\mathcal{L}_{\mathrm{Risk}}(\theta)$$
+            </div>
+          </article>
+        </div>
 
         <figure class="paper-figure reveal">
           <img
@@ -244,23 +294,11 @@
           />
           <figcaption class="paper-figure__caption">
             <em>Figure 1. RAMAC pipeline. The distributional critic Z<sub>φ</sub> fits the
-            return distribution and aggregates its lower tail into a CVaR signal. That signal
-            is differentiated through the generative actor π<sub>θ</sub> (diffusion or flow),
-            trained with composite objective ℒ<sub>π</sub> = ℒ<sub>BC</sub> + η ℒ<sub>Risk</sub>
-            to shift mass away from low-quantile regions while staying on-manifold.</em>
+            return distribution and aggregates its lower tail into a CVaR signal. The same
+            diffusion/flow actor receives this lower-tail guidance while behavior regularization
+            keeps updates near dataset-supported modes.</em>
           </figcaption>
         </figure>
-
-        <div role="math" aria-label="Composite actor loss: L-pi equals L-BC plus eta times L-Risk" class="eq-block reveal">
-          $$\mathcal{L}_\pi(\theta) =
-          \underbrace{\mathcal{L}_{\mathrm{BC}}(\theta)}_{\text{data fidelity}}
-          + \eta\,\underbrace{\mathcal{L}_{\mathrm{Risk}}(\theta)}_{\text{tail-risk aversion}}$$
-          <p class="eq-caption">
-            <em>Eq. 12. The BC term keeps actions on the data manifold and directly bounds OOD
-            probability (Proposition 1). The CVaR term shifts mass away from the worst-α return
-            outcomes.</em>
-          </p>
-        </div>
       </section>
       <hr class="section-rule">
 

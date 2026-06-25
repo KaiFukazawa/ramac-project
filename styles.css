@@ -693,6 +693,62 @@ pre {
   color: var(--color-text-secondary);
 }
 
+/* ─── Method cards ────────────────────────────────────────── */
+
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 28px auto 34px;
+}
+
+.method-card {
+  background: #ffffff;
+  border: 1px solid rgba(29, 111, 164, 0.16);
+  border-radius: 18px;
+  padding: 22px 20px 20px;
+  box-shadow: 0 14px 34px rgba(20, 54, 94, 0.08);
+}
+
+.method-card__kicker {
+  margin: 0 0 8px;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.method-card h3 {
+  margin: 0 0 10px;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: 1.08rem;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+}
+
+.method-card p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.62;
+  color: var(--color-text-secondary);
+}
+
+.method-card__eq {
+  margin-top: 16px;
+  padding: 13px 12px;
+  border-radius: 12px;
+  background: rgba(237, 247, 252, 0.82);
+  border: 1px solid rgba(29, 111, 164, 0.12);
+  overflow-x: auto;
+}
+
+.method-card__eq .katex-display {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
 /* ─── Paper figure ────────────────────────────────────────── */
 
 .paper-figure {
@@ -1013,6 +1069,12 @@ pre {
 }
 
 /* ─── Responsive ──────────────────────────────────────────── */
+
+@media (max-width: 899px) {
+  .method-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 @media (max-width: 639px) {
   .sticky-nav {
