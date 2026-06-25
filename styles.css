@@ -734,33 +734,33 @@ pre {
   background: #ffffff;
   border: 1px solid rgba(29, 111, 164, 0.16);
   border-radius: 18px;
-  padding: 22px 24px 22px;
+  padding: 14px 20px 20px;
   box-shadow: 0 14px 34px rgba(20, 54, 94, 0.08);
 }
 
 .method-card h3 {
-  margin: 0 0 12px;
+  margin: 0 0 8px;
   font-family: "Libre Baskerville", Georgia, serif;
   font-size: var(--text-hero);
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.01em;
-  color: #177EAD;
+  color: #177EAD !important;
   text-align: left;
 }
 
 .method-card p {
   margin: 0;
   font-family: "DM Sans", sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 500;
-  line-height: 1.65;
+  line-height: 1.58;
   letter-spacing: -0.01em;
   color: #0F1117;
 }
 
 .method-card__eq {
-  margin: 16px 0;
+  margin: 10px 0;
   padding: 0;
   border-radius: 0;
   background: transparent;

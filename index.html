@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=solution-list-v25" />
+    <link rel="stylesheet" href="styles.css?v=solution-interleave-v26" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -251,7 +251,15 @@
             <div class="method-card__eq">
               $$\begin{aligned}
               \delta_\phi
-              &:= r+\gamma Z_{\bar\phi}(s',a';\tau')-Z_\phi(s,a;\tau),\\
+              &:= r+\gamma Z_{\bar\phi}(s',a';\tau')-Z_\phi(s,a;\tau).
+              \end{aligned}$$
+            </div>
+            <p>
+              The critic is trained by minimizing the quantile-Huber Bellman residual over dataset
+              transitions, actor-sampled next actions, and quantile levels:
+            </p>
+            <div class="method-card__eq">
+              $$\begin{aligned}
               \mathcal{L}_{\mathrm{Critic}}(\phi)
               &= \mathbb{E}_{
               \substack{
@@ -277,7 +285,15 @@
             </p>
             <div class="method-card__eq">
               $$\begin{aligned}
-              a &= \psi_\theta(s,z), \qquad z \sim \mathcal{N}(0,I),\\
+              a &= \psi_\theta(s,z), \qquad z \sim \mathcal{N}(0,I).
+              \end{aligned}$$
+            </div>
+            <p>
+              The same generated action is evaluated by the distributional critic, whose lower
+              quantiles define the CVaR signal:
+            </p>
+            <div class="method-card__eq">
+              $$\begin{aligned}
               \mathrm{CVaR}_\alpha\!\bigl(Z_\phi(s,a)\bigr)
               &= \frac{1}{\alpha}\int_0^\alpha Z_\phi(s,a;\tau)\,d\tau\\
               &\approx \frac{1}{K}\sum_{k=1}^{K} Z_\phi(s,a;\tau_k),
@@ -301,11 +317,25 @@
               \mathcal{L}_{\mathrm{Risk}}(\theta)
               &=
               -\mathbb{E}_{s\sim\mathcal{D},\,a\sim\pi_\theta(\cdot\mid s)}
-              \big[\mathrm{CVaR}_\alpha(Z_\phi(s,a))\big],\\
+              \big[\mathrm{CVaR}_\alpha(Z_\phi(s,a))\big].
+              \end{aligned}$$
+            </div>
+            <p>
+              The behavior-cloning term anchors the same actor to dataset actions:
+            </p>
+            <div class="method-card__eq">
+              $$\begin{aligned}
               \mathcal{L}_{\mathrm{BC}}(\theta)
               &=
               -\mathbb{E}_{(s,a)\sim\mathcal{D}}
-              \big[\log \pi_\theta(a\mid s)\big],\\
+              \big[\log \pi_\theta(a\mid s)\big].
+              \end{aligned}$$
+            </div>
+            <p>
+              RAMAC combines these two terms into one actor objective:
+            </p>
+            <div class="method-card__eq">
+              $$\begin{aligned}
               \mathcal{L}_{\pi}(\theta)
               &=
               \underbrace{\mathcal{L}_{\mathrm{BC}}(\theta)}_{\text{data fidelity}}
