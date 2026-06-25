@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=single-policy-label-v56" />
+    <link rel="stylesheet" href="styles.css?v=br-matters-blue-v57" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -255,25 +255,23 @@
 
         <div class="br-subsection reveal" aria-label="Why behavior regularization matters">
           <h3>Why Behavior Regularization Matters</h3>
-          <ul>
-            <li>
-              In contrast to prior-anchored perturbation, RAMAC applies behavior regularization
-              directly to the deployed generative policy \(\pi_\theta\).
-            </li>
-            <li>
-              Shrinking the forward KL suppresses probability mass outside the behavior support,
-              yielding a per-state OOD probability bound.
-            </li>
-            <li>
-              CVaR is amplified by \(1/\alpha\) under distribution shift, so controlling behavior
-              mismatch also stabilizes lower-tail objectives.
-            </li>
-          </ul>
-
-          <div class="br-theory-box" aria-label="Formal OOD and CVaR stability links">
+          <p class="br-body">
+            Training the generative actor with a behavior-cloning term can be viewed as controlling
+            the forward KL from the behavior policy to the deployed policy. Shrinking this forward
+            KL suppresses probability mass outside the behavior support, yielding a per-state OOD
+            probability bound.
+          </p>
+          <div class="br-theory-box" aria-label="Per-state OOD probability bound">
             $$\delta_s(\pi_\theta)
             \le
             1-\exp\!\left\{-D_{\mathrm{KL}}\!\left(\beta(\cdot\mid s)\,\Vert\,\pi_\theta(\cdot\mid s)\right)\right\}$$
+          </div>
+
+          <p class="br-body">
+            CVaR is amplified by \(1/\alpha\) under distribution shift, so controlling behavior
+            mismatch also stabilizes lower-tail objectives.
+          </p>
+          <div class="br-theory-box" aria-label="CVaR stability bound">
             $$\big|\mathrm{CVaR}_{\alpha}^{\beta}
             -
             \mathrm{CVaR}_{\alpha}^{\pi_\theta}\big|

@@ -772,12 +772,12 @@ pre {
 /* ─── Behavior-regularization subsection ─────────────────── */
 
 .br-subsection {
-  max-width: 912px;
+  max-width: 980px;
   margin: 36px auto 0;
   padding: 20px 28px 18px;
-  border: 2px solid #0F1117;
+  border: 2px solid rgba(23, 126, 173, 0.34);
   border-radius: 12px;
-  background: #F4F5F7;
+  background: #EDF7FC;
   text-align: left;
 }
 
@@ -791,9 +791,8 @@ pre {
   color: #0F1117;
 }
 
-.br-subsection ul {
+.br-body {
   margin: 0;
-  padding-left: 1.2em;
   font-family: "DM Sans", sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -802,21 +801,17 @@ pre {
   color: #0F1117;
 }
 
-.br-subsection li {
-  margin: 0 0 8px;
-}
-
-.br-subsection li:last-child {
-  margin-bottom: 0;
-}
-
 .br-theory-box {
-  margin: 16px 0 0;
+  margin: 12px 0 16px;
   padding: 12px 14px;
-  border: 1px solid rgba(15, 17, 23, 0.18);
+  border: 1px solid rgba(23, 126, 173, 0.16);
   border-radius: 10px;
-  background: #FFFFFF;
+  background: rgba(255, 255, 255, 0.72);
   overflow-x: auto;
+}
+
+.br-theory-box:last-of-type {
+  margin-bottom: 0;
 }
 
 .br-theory-box .katex-display {
@@ -1257,7 +1252,7 @@ pre {
     font-size: 17px;
   }
 
-  .br-subsection ul {
+  .br-body {
     font-size: 15px;
   }
 
