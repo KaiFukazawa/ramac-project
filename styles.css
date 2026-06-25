@@ -724,9 +724,10 @@ pre {
 
 .method-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 6px;
+  grid-template-columns: minmax(150px, 0.34fr) minmax(0, 1fr);
+  gap: 16px;
   margin: 14px auto 0;
+  align-items: center;
 }
 
 .objective-flow {
@@ -741,7 +742,7 @@ pre {
   line-height: 1.2;
   letter-spacing: -0.012em;
   color: #177EAD;
-  text-align: center;
+  text-align: left;
 }
 
 .objective-eq {
@@ -1131,6 +1132,11 @@ pre {
 @media (max-width: 899px) {
   .method-grid {
     grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .objective-label {
+    text-align: center;
   }
 }
 
