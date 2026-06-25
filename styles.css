@@ -734,12 +734,12 @@ pre {
   background: #ffffff;
   border: 1px solid rgba(29, 111, 164, 0.16);
   border-radius: 18px;
-  padding: 14px 20px 20px;
+  padding: 8px 14px 18px;
   box-shadow: 0 14px 34px rgba(20, 54, 94, 0.08);
 }
 
 .method-card h3 {
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   font-family: "Libre Baskerville", Georgia, serif;
   font-size: var(--text-hero);
   font-weight: 700;
@@ -751,11 +751,11 @@ pre {
 
 .method-card p {
   margin: 0;
-  font-family: "DM Sans", sans-serif;
-  font-size: 17px;
-  font-weight: 500;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: 16px;
+  font-weight: 700;
   line-height: 1.58;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.018em;
   color: #0F1117;
 }
 
