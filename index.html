@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=gif-start-subtle-v67" />
+    <link rel="stylesheet" href="styles.css?v=gif-start-toggle-v68" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -609,16 +609,27 @@
       );
       revealEls.forEach(el => revealObserver.observe(el));
 
-      // Start GIFs on demand by swapping poster frames for animated GIFs.
+      // Toggle GIF playback by swapping between poster frames and animated GIFs.
       document.querySelectorAll('.gif-start-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           const media = btn.closest('.risky-gif-media');
           const img = media.querySelector('img');
           const gifSrc = img.dataset.gifSrc;
+          const posterSrc = img.dataset.posterSrc || img.src;
           if (!gifSrc) return;
-          img.src = `${gifSrc}?play=${Date.now()}`;
-          media.classList.add('is-playing');
-          btn.disabled = true;
+          img.dataset.posterSrc = posterSrc;
+
+          if (media.classList.contains('is-playing')) {
+            img.src = posterSrc;
+            media.classList.remove('is-playing');
+            btn.textContent = 'Start';
+            btn.setAttribute('aria-label', btn.getAttribute('aria-label').replace('Stop', 'Start'));
+          } else {
+            img.src = `${gifSrc}?play=${Date.now()}`;
+            media.classList.add('is-playing');
+            btn.textContent = '||';
+            btn.setAttribute('aria-label', btn.getAttribute('aria-label').replace('Start', 'Stop'));
+          }
         });
       });
 
