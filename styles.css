@@ -1168,7 +1168,7 @@ pre {
 
 .results-wrap {
   max-width: var(--width-wide);
-  margin: 32px auto 0;
+  margin: 24px auto 0;
   overflow-x: auto;
 }
 
@@ -1176,11 +1176,11 @@ pre {
   width: 100%;
   border-collapse: collapse;
   font-family: "DM Sans", sans-serif;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .rt-th {
-  padding: 11px 16px;
+  padding: 8px 10px;
   font-weight: 600;
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
@@ -1207,7 +1207,7 @@ pre {
 }
 
 .rt-td {
-  padding: 11px 16px;
+  padding: 8px 10px;
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -1218,7 +1218,7 @@ pre {
 }
 
 .rt-td--metric {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--color-text-secondary);
 }
 
@@ -1228,12 +1228,8 @@ pre {
 }
 
 .rt-td--best {
-  font-weight: 700;
-  color: var(--color-accent);
-}
-
-.rt-td--second {
-  background: var(--color-accent-light);
+  font-weight: 800;
+  color: #0F1117;
 }
 
 /* ─── Table 2 (OOD action rate) ───────────────────────────── */
