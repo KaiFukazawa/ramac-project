@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=callout-text-match-v62" />
+    <link rel="stylesheet" href="styles.css?v=risky-bandit-gifs-v63" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -314,20 +314,28 @@
 
         <h3 class="subsection-heading subsection-heading--center reveal">2-D Risky Bandit</h3>
 
-        <div class="figure-placeholder reveal" aria-label="Eight-panel grid showing policy distributions for ground truth and seven methods on the 2-D risky bandit. RADAC concentrates near the safe center; ORAAC variants leak into inter-mode gaps; risk-neutral baselines chase the risky ring.">
-          <span>Figure pending — see paper</span>
+        <div class="risky-gif-grid reveal" aria-label="2-D risky bandit policy evolution GIFs for DQL, ORAAC, and RADAC">
+          <figure class="risky-gif-card">
+            <img src="assets/dql.gif" alt="Diffusion Q-learning policy evolution on the 2-D risky bandit" loading="lazy">
+            <figcaption>DQL</figcaption>
+          </figure>
+          <figure class="risky-gif-card">
+            <img src="assets/oraac.gif" alt="ORAAC policy evolution on the 2-D risky bandit" loading="lazy">
+            <figcaption>ORAAC</figcaption>
+          </figure>
+          <figure class="risky-gif-card">
+            <img src="assets/radac.gif" alt="RADAC policy evolution on the 2-D risky bandit" loading="lazy">
+            <figcaption>RADAC</figcaption>
+          </figure>
         </div>
         <p class="table-caption reveal">
           <em>A 2-D contextual bandit exposes the core challenge: preserving multimodal behavior
           while moving probability away from rare lower-tail hazards.</em>
         </p>
         <p class="table-caption reveal">
-          <em>Top: Ground truth consists of a safe center mode (yellow-green) and a risky ring
-          where high-reward samples (yellow) are interspersed with catastrophic penalties (purple).
-          Risk-neutral generative baselines concentrate on the risky ring or collapse topology.
-          Prior-anchored perturbation methods produce samples in the low-density inter-mode region,
-          exhibiting OOD leakage. RADAC concentrates near the safe center without losing
-          multimodality.</em>
+          <em>Left to right: DQL chases risk-neutral high-value regions, ORAAC can leak through
+          low-density inter-mode regions, and RADAC shifts mass toward the safe center while
+          preserving supported behavior.</em>
         </p>
 
         <h3 class="subsection-heading reveal">Stochastic-D4RL Benchmark</h3>
