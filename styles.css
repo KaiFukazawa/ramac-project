@@ -1118,6 +1118,23 @@ pre {
   margin-top: 16px;
 }
 
+.result-image-wrap {
+  max-width: var(--width-wide);
+  margin: 24px auto 0;
+  overflow-x: auto;
+}
+
+.result-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.result-image--d4rl {
+  min-width: 820px;
+}
+
 /* ─── Scroll-reveal ───────────────────────────────────────── */
 
 .reveal {
