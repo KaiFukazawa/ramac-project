@@ -735,7 +735,7 @@ pre {
 .objective-label {
   margin: 0;
   position: absolute;
-  left: 130px;
+  left: 105px;
   top: 50%;
   max-width: 260px;
   transform: translateY(-50%);
