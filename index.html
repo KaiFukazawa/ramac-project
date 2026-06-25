@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=gif-start-toggle-v68" />
+    <link rel="stylesheet" href="styles.css?v=gif-reset-v69" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -610,6 +610,17 @@
       revealEls.forEach(el => revealObserver.observe(el));
 
       // Toggle GIF playback by swapping between poster frames and animated GIFs.
+      function resetGifMedia(media) {
+        const img = media.querySelector('img');
+        const btn = media.querySelector('.gif-start-btn');
+        const posterSrc = img.dataset.posterSrc || img.src;
+        img.dataset.posterSrc = posterSrc;
+        img.src = posterSrc;
+        media.classList.remove('is-playing');
+        btn.textContent = 'Start';
+        btn.setAttribute('aria-label', btn.getAttribute('aria-label').replace('Stop', 'Start'));
+      }
+
       document.querySelectorAll('.gif-start-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           const media = btn.closest('.risky-gif-media');
@@ -620,10 +631,7 @@
           img.dataset.posterSrc = posterSrc;
 
           if (media.classList.contains('is-playing')) {
-            img.src = posterSrc;
-            media.classList.remove('is-playing');
-            btn.textContent = 'Start';
-            btn.setAttribute('aria-label', btn.getAttribute('aria-label').replace('Stop', 'Start'));
+            resetGifMedia(media);
           } else {
             img.src = `${gifSrc}?play=${Date.now()}`;
             media.classList.add('is-playing');
@@ -632,6 +640,18 @@
           }
         });
       });
+
+      const gifResetObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+              resetGifMedia(entry.target);
+            }
+          });
+        },
+        { threshold: 0.02 }
+      );
+      document.querySelectorAll('.risky-gif-media').forEach(media => gifResetObserver.observe(media));
 
       // BibTeX copy button
       function copyBibtex(btn) {
