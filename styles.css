@@ -1142,8 +1142,9 @@ pre {
 .result-image-wrap--d4rl {
   width: min(calc(100vw - 2rem), 1120px);
   max-width: none;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  margin-left: auto;
+  margin-right: auto;
+  transform: none;
 }
 
 .result-image--d4rl {
