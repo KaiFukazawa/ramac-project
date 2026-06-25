@@ -761,6 +761,7 @@ pre {
 
 .objective-eq--final {
   margin-top: 0;
+  transform: translateY(8px);
 }
 
 .objective-eq .katex-display {
@@ -1147,6 +1148,10 @@ pre {
     transform: none;
     text-align: center;
     white-space: normal;
+  }
+
+  .objective-eq--final {
+    transform: none;
   }
 }
 
