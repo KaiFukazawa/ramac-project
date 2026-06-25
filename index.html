@@ -33,7 +33,7 @@
       })"
     ></script>
 
-    <link rel="stylesheet" href="styles.css?v=gif-resume-frame-v74" />
+    <link rel="stylesheet" href="styles.css?v=gif-render-sync-v75" />
   </head>
   <body>
     <a href="#overview" class="skip-link">Skip to content</a>
@@ -633,16 +633,36 @@
       const gifFrameMs = 200;
       const gifFrameCount = gifEpochMax / gifEpochStep + 1;
 
-      function setGifFrame(media, frameIndex) {
+      function setGifFrame(media, frameIndex, onRendered) {
         const img = media.querySelector('img');
         const clampedFrame = Math.min(Math.max(frameIndex, 1), gifFrameCount);
         const frameSrc = getGifFrameSrc(img, clampedFrame);
         const epoch = Math.min((clampedFrame - 1) * gifEpochStep, gifEpochMax);
         const card = media.closest('.risky-gif-card');
         const epochEl = card && card.querySelector('.gif-epoch');
-        media.dataset.currentFrame = String(clampedFrame);
-        if (frameSrc) img.src = frameSrc;
-        if (epochEl) epochEl.textContent = `Epoch ${epoch}`;
+        const frameToken = `${clampedFrame}-${Date.now()}`;
+        media.dataset.frameToken = frameToken;
+
+        const commitFrame = () => {
+          if (media.dataset.frameToken !== frameToken) return;
+          media.dataset.currentFrame = String(clampedFrame);
+          if (epochEl) epochEl.textContent = `Epoch ${epoch}`;
+          if (onRendered) onRendered();
+        };
+
+        if (!frameSrc) {
+          commitFrame();
+          return;
+        }
+
+        const absoluteFrameSrc = new URL(frameSrc, window.location.href).href;
+        if (img.src === absoluteFrameSrc && img.complete) {
+          commitFrame();
+          return;
+        }
+
+        img.addEventListener('load', commitFrame, { once: true });
+        img.src = frameSrc;
       }
 
       function setGifEpoch(media, epoch) {
@@ -656,10 +676,23 @@
         return `${prefix}${String(frameIndex).padStart(2, '0')}.png`;
       }
 
+      function preloadGifFrames(media) {
+        const img = media.querySelector('img');
+        for (let frameIndex = 1; frameIndex <= gifFrameCount; frameIndex += 1) {
+          const frameSrc = getGifFrameSrc(img, frameIndex);
+          if (!frameSrc) continue;
+          const preload = new Image();
+          preload.src = frameSrc;
+        }
+      }
+
       function clearGifEpochTimer(media) {
         if (media.dataset.epochTimer) {
-          clearInterval(Number(media.dataset.epochTimer));
+          clearTimeout(Number(media.dataset.epochTimer));
           delete media.dataset.epochTimer;
+        }
+        if (media.dataset.frameToken) {
+          delete media.dataset.frameToken;
         }
       }
 
@@ -684,6 +717,23 @@
         setButtonToStart(btn);
       }
 
+      function scheduleNextGifFrame(media) {
+        clearGifEpochTimer(media);
+        media.dataset.epochTimer = window.setTimeout(() => {
+          if (!media.classList.contains('is-playing')) return;
+          const nextFrame = Number(media.dataset.currentFrame || 1) + 1;
+          if (nextFrame >= gifFrameCount) {
+            finishGifPlayback(media);
+            return;
+          }
+          setGifFrame(media, nextFrame, () => {
+            if (media.classList.contains('is-playing')) {
+              scheduleNextGifFrame(media);
+            }
+          });
+        }, gifFrameMs);
+      }
+
       function startGifPlayback(media) {
         const btn = media.querySelector('.gif-start-btn');
         clearGifEpochTimer(media);
@@ -696,14 +746,11 @@
         media.classList.add('is-playing');
         btn.textContent = '||';
         btn.setAttribute('aria-label', btn.getAttribute('aria-label').replace('Start', 'Stop'));
-        media.dataset.epochTimer = window.setInterval(() => {
-          frameIndex += 1;
-          if (frameIndex >= gifFrameCount) {
-            finishGifPlayback(media);
-          } else {
-            setGifFrame(media, frameIndex);
+        setGifFrame(media, frameIndex, () => {
+          if (media.classList.contains('is-playing')) {
+            scheduleNextGifFrame(media);
           }
-        }, gifFrameMs);
+        });
       }
 
       function resetGifMedia(media) {
@@ -747,7 +794,10 @@
         },
         { threshold: 0.02 }
       );
-      document.querySelectorAll('.risky-gif-media').forEach(media => gifResetObserver.observe(media));
+      document.querySelectorAll('.risky-gif-media').forEach(media => {
+        preloadGifFrames(media);
+        gifResetObserver.observe(media);
+      });
 
       // BibTeX copy button
       function copyBibtex(btn) {
