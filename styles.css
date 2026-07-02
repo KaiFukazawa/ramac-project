@@ -189,13 +189,16 @@ pre {
   color: var(--color-hero-deep);
 }
 
-.hero__authors a {
-  color: inherit;
+.hero__authors a,
+.hero__authors a:visited {
+  color: var(--color-hero-deep);
   text-decoration: none;
 }
 
 .hero__authors a:hover,
-.hero__authors a:focus-visible {
+.hero__authors a:focus-visible,
+.hero__authors a:active {
+  color: var(--color-hero-deep);
   text-decoration: underline;
   text-underline-offset: 0.16em;
 }
